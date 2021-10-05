@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -9,9 +9,11 @@ import {
 } from './components';
 
 const App = () => {
+	const baseURL = 'https://salty-inlet-30901.herokuapp.com/';
+	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
 
 
-	
+
 	return <Router>
 	<Header />
 	<main>
@@ -20,7 +22,7 @@ const App = () => {
 				Home
 			</Route>
 			<Route path="/routines">
-				<Routines />
+				<Routines baseURL={baseURL} />
 			</Route>
 		</Switch>
 	</main>

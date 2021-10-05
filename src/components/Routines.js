@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Routines = () => {
+const Routines = (props) => {
+    const { baseURL } = props;
 	
     return <div className="routines">
         <h1>Routines</h1>
+        {baseURL}
     </div>
 }
 
