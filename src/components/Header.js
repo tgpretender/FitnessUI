@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	
     return <div className="header">
-        <h1>Header</h1>
+        <Link exact to="/">Home</Link>
+        <Link exact to="/routines">Routines</Link>
     </div>
 }
 
