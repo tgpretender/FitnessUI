@@ -8,6 +8,8 @@ import {
 	Routines,
 	Register,
 	Login
+	MyRoutines,
+	Activities
 } from './components';
 
 const App = () => {
@@ -19,41 +21,50 @@ const App = () => {
 
 
 	return <Router>
-	<Header />
-	<main>
-		<Switch>
-			<Route exact path="/">
-				Home
-			</Route>
-			<Route path="/routines">
-				<Routines baseURL={baseURL} />				
-			</Route>
-			<Route path="/register">
-				<Register 
-					isAuthenticated={isAuthenticated}
-					setIsAuthenticated={setIsAuthenticated}
-					userToken={userToken}
-					setUserToken={setUserToken}
-					usernameString={usernameString}
-					setUsernameString={setUsernameString}
-					passwordString={passwordString}
-					setPasswordString={setPasswordString}
-				/>
-			</Route>
-		
-			<Route path="/login">
-				<Login 
+		<Header />
+			<main>
+				<Switch>
+					<Route exact path="/">
+						<h1>Home</h1>
+						<div className="logReg">
+							{ isAuthenticated ? "Authenticated" : "Not Authenitcated"}
+						</div>
+					</Route>
+					<Route path="/register">
+						<Register 
+							isAuthenticated={isAuthenticated}
+							setIsAuthenticated={setIsAuthenticated}
+							userToken={userToken}
+							setUserToken={setUserToken}
+							usernameString={usernameString}
+							setUsernameString={setUsernameString}
+							passwordString={passwordString}
+							setPasswordString={setPasswordString}
+						/>
+					</Route>
+				
+					<Route path="/login">
+						<Login 
 
-					usernameString={usernameString}
-					setUsernameString={setUsernameString}
-					passwordString={passwordString}
-					setPasswordString={setPasswordString}
-				/>
-			</Route>
-		</Switch>
-	</main>
-	<Footer />
-</Router>
+							usernameString={usernameString}
+							setUsernameString={setUsernameString}
+							passwordString={passwordString}
+							setPasswordString={setPasswordString}
+						/>
+					</Route>
+					<Route path="/routines">
+						<Routines baseURL={baseURL} />
+					</Route>
+					<Route path="/myroutines">
+						<MyRoutines baseURL={baseURL} />
+					</Route>
+					<Route path="/activities">
+						<Activities baseURL={baseURL} />
+					</Route>
+				</Switch>
+			</main>
+		<Footer />
+	</Router>
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -29,6 +29,25 @@ header {
 }
 main {
 	grid-row:2;
+	padding:10px;
+	overflow-y:auto;
+}
+.routineList {
+	margin-top:10px;
+}
+.routine {
+	border:1px solid black;
+	margin:10px 0;
+	padding:10px
+}
+.routineListActivity {
+	margin-left:20px;
+	margin-top:10px;
+}
+.activity {
+	border:1px solid black;
+	margin:10px 0;
+	padding:10px
 }
 footer {
 	grid-row:3;
