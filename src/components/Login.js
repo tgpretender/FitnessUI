@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-const Login = ({ setIsAuthenticated, isAuthenticated, userToken, setUserToken }) => {
+const Login = ( ) => {
 
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [userToken, setUserToken] = useState('')
 
     function loginUser(username, password) {
 
@@ -32,6 +34,7 @@ const Login = ({ setIsAuthenticated, isAuthenticated, userToken, setUserToken })
     function logoutUser() {
         setIsAuthenticated(false)
         setUserToken('')
+        localStorage.clear()
     }
 
     return (
@@ -61,6 +64,13 @@ const Login = ({ setIsAuthenticated, isAuthenticated, userToken, setUserToken })
                 }
                 }
                 >Login</button> 
+
+                <button className="logoutBtn" onClick={() => {
+                    logoutUser()
+                }}
+                >Logout</button>
+
+
             </div>
         </>
     )

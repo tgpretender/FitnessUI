@@ -32,10 +32,17 @@ const App = () => {
 								{ showLog ?
 								<div>
 									<Login 
+									/*
+										isAuthenticated={isAuthenticated}
+										setIsAuthenticated={setIsAuthenticated}
+										userToken={userToken}
+										setUserToken={setUserToken}
+									*/
 										usernameString={usernameString}
 										setUsernameString={setUsernameString}
 										passwordString={passwordString}
 										setPasswordString={setPasswordString}
+
 									/>
 									<br />
 									<p>Not a member?</p>

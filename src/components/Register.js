@@ -4,12 +4,13 @@ const Register = ({ setIsAuthenticated, setUserToken }) => {
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');
     
+
     function registerUser(username, password) {
 
         fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 //user: {
