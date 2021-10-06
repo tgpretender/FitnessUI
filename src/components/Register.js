@@ -1,36 +1,70 @@
 import React, { useEffect, useState } from 'react';
 
-const Register = ({ setIsAuthenticated, setUserToken }) => {
+const Register = ({ setUserToken }) => {
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');
-    
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    function registerUser(username, password) {
 
-        fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+    async function registerUser(username, password) {
+    //try{
+        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 //user: {
-                    username: username,
-                    password: password
+                    'username': username,
+                    'password': password
                 //},
             }),
         })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
+        //const data = await response.json();
+        //return data
+        //console.log('datadatadatadatadatadata', data)
+        /*
+         .then(response => response.json())
+            
+         .then(result => {
+            console.log('datadatadatadatadatadata', result)
+
+                if (result) {
+                    const token = result.token;
+                    setPasswordString('')
+                    setUsernameString('')
                     setIsAuthenticated(true)
-                    setUserToken(result.token)
-                    localStorage.setItem("token", result.token)
-                }
+                    setUserToken(token)
+                    //localStorage.setItem("token", token)
+                    /*
+                    if(results) {
+                        const token = await results.token;
+                        setUserToken(token);
+                        setMyUsername(myUsername);
+                        localStorage.setItem('userToken', token);
+                        localStorage.setItem('myUsername', JSON.stringify(myUsername));
+                    
+                    }
 
-                return result
-            })
-            .catch(console.error)
-
+                return data
+        */
+                .then(response => response.json())
+                .then(result => {
+                    if (result) {
+                        const token = result.token
+                        console.log(result)
+                        setIsAuthenticated(true)
+                        setUserToken(token)
+                        localStorage.setItem("token", token)
+                    }
+    
+                    return result
+                })
+                .catch(console.error)
+            
+        //catch(error){
+        //    console.error(error)
+        //}
     };
 
     return (
