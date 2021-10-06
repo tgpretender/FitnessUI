@@ -29,6 +29,14 @@ header {
 }
 main {
 	grid-row:2;
+	overflow-y:auto;
+}
+.routineList {
+	margin-top:10px;
+}
+.routine {
+	border: 1px solid black;
+	margin: 10px 0;
 }
 footer {
 	grid-row:3;

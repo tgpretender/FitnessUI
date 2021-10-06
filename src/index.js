@@ -10,7 +10,7 @@ import {
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+	//const [ isAuthenticated, setIsAuthenticated ] = useState(true);
 
 
 
@@ -19,7 +19,7 @@ const App = () => {
 	<main>
 		<Switch>
 			<Route exact path="/">
-				Home
+				<h1>Home</h1>
 			</Route>
 			<Route path="/routines">
 				<Routines baseURL={baseURL} />
