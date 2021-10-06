@@ -9,6 +9,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size:14px;
 }
+h1 {
+	margin-bottom: 10px;
+}
 #app {
 	display: grid;
     grid-template-columns: 1fr;
@@ -18,19 +21,22 @@ body {
 	height: 100%;
 	width: 100%;
 }
-
-.navLink {
-	margin:5px;
-}
 header {
 	grid-row:1;
 	background-color:cornflowerblue;
 	text-align:center;
 }
+.navLink {
+	margin:5px;
+}
 main {
 	grid-row:2;
 	padding:10px;
 	overflow-y:auto;
+}
+#logReg {
+	border: 1px solid black;
+	padding:10px;
 }
 .routineList {
 	margin-top:10px;

@@ -14,20 +14,54 @@ import {
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	const [ isAuthenticated, setIsAuthenticated ] = useState(false);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [userToken, setUserToken] = useState('')
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');
-
+	const [showLog, setShowLog] = useState(true)
 
 	return <Router>
 		<Header />
 			<main>
 				<Switch>
 					<Route exact path="/">
-						<h1>Home</h1>
 						<div className="logReg">
-							{ isAuthenticated ? "Authenticated" : "Not Authenitcated"}
+							{ isAuthenticated ? "Welcome to Fitness Trackr!" : 
+							
+							<div id="logReg">
+								{ showLog ?
+								<div>
+									<Login 
+										usernameString={usernameString}
+										setUsernameString={setUsernameString}
+										passwordString={passwordString}
+										setPasswordString={setPasswordString}
+									/>
+									<br />
+									<p>Not a member?</p>
+                					<br />
+                					<button className="regButton" onClick={() => setShowLog(false)}>Register</button>
+								</div>
+									:
+									<div>
+									<Register 
+										isAuthenticated={isAuthenticated}
+										setIsAuthenticated={setIsAuthenticated}
+										userToken={userToken}
+										setUserToken={setUserToken}
+										usernameString={usernameString}
+										setUsernameString={setUsernameString}
+										passwordString={passwordString}
+										setPasswordString={setPasswordString}
+									/>
+									<br />
+									<p>Already a member?</p>
+									<br />
+									<button className="regButton" onClick={() => setShowLog(true)}>Login</button>
+									</div>
+							}
+							</div>
+							}
 						</div>
 					</Route>
 					<Route path="/register">
