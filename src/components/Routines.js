@@ -16,19 +16,39 @@ const Routines = (props) => {
         })
         .catch(err => console.error(err))
     }, []);
-    console.log('public routines: ',publicRoutines);
 
     return <div className="routines">
         <h1>Routines</h1>
         <p>These are all the publically available routines.</p>
-        <div class="routineList">
+        <div className="routineList">
             {
                 publicRoutines.map((routine,index) => {
-                    const { id, creatorName, name, goal } = routine;
-                    return <div key={id} className="routine">
-                        <div className="routineHeading">Name: {name}</div>
-                        <div className="routineGoal">Goal: {goal}</div> 
-                        <div className="routineCreator">Creator: {creatorName}</div>
+                    const { id: routineId, creatorName, name: routineName, goal, activities } = routine;
+                    const rActs = [];
+                    if(activities.length > 0){
+                        activities.map((activity, index) => {
+                            const {id: activityId, name: activityName, description, duration, count} = activity;
+
+                            const template = `
+                               <div className="routineActivityList" key={activityId}>
+                                    Name: {activityName} <br />
+                                    Description: {description} <br />
+                                    Duration: {duration} <br />
+                                    Count: {count}
+                                </div>`;
+
+                            rActs.push(template);
+                        })
+                    } else {
+                        rActs.push("None");
+                    }
+
+                    return <div key={routineId} className="routine">
+                        Name: {routineName}<br />
+                        Goal: {goal}<br />
+                        Creator: {creatorName}<br />
+                        Activities: <br />
+                        {rActs}
                     </div>
                 })
             }

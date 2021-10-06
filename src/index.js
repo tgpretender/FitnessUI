@@ -5,12 +5,13 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {
 	Header,
 	Footer,
-	Routines
+	Routines,
+	MyRoutines
 } from './components';
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	//const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
 
 
 
