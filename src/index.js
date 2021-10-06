@@ -9,7 +9,7 @@ import {
 } from './components';
 
 const App = () => {
-	const baseURL = 'https://salty-inlet-30901.herokuapp.com/';
+	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
 
 
