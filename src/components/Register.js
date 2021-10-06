@@ -12,18 +12,18 @@ const Register = ({ setIsAuthenticated, setUserToken }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: {
+                //user: {
                     username: username,
-                    password: password,
-                },
+                    password: password
+                //},
             }),
         })
             .then(response => response.json())
             .then(result => {
                 if (result.success) {
                     setIsAuthenticated(true)
-                    setUserToken(result.data.token)
-                    localStorage.setItem("token", result.data.token)
+                    setUserToken(result.token)
+                    localStorage.setItem("token", result.token)
                 }
 
                 return result

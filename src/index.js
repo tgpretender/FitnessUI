@@ -7,14 +7,14 @@ import {
 	Footer,
 	Routines,
 	Register,
-	Login
+	Login,
 	MyRoutines,
 	Activities
 } from './components';
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+	const [ isAuthenticated, setIsAuthenticated ] = useState(false);
 	const [userToken, setUserToken] = useState('')
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');

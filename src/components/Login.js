@@ -13,10 +13,10 @@ const Login = ({ setIsAuthenticated, isAuthenticated, userToken, setUserToken })
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user: {
+                //user: {
                     username: username,
                     password: password
-                }
+                //}
             })
         }).then(response => response.json())
             .then(result => {
