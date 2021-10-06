@@ -8,7 +8,7 @@ import {
 	Routines,
 	Register,
 	Login,
-	MyRoutines,
+	Profile,
 	Activities
 } from './components';
 
@@ -21,7 +21,7 @@ const App = () => {
 	const [showLog, setShowLog] = useState(true)
 
 	return <Router>
-		<Header />
+		<Header isAuthenticated={isAuthenticated} />
 			<main>
 				<Switch>
 					<Route exact path="/">
@@ -57,7 +57,7 @@ const App = () => {
 									<br />
 									<p>Already a member?</p>
 									<br />
-									<button className="regButton" onClick={() => setShowLog(true)}>Login</button>
+									<button className="logButton" onClick={() => setShowLog(true)}>Login</button>
 									</div>
 							}
 							</div>
@@ -79,7 +79,6 @@ const App = () => {
 				
 					<Route path="/login">
 						<Login 
-
 							usernameString={usernameString}
 							setUsernameString={setUsernameString}
 							passwordString={passwordString}
@@ -89,8 +88,8 @@ const App = () => {
 					<Route path="/routines">
 						<Routines baseURL={baseURL} />
 					</Route>
-					<Route path="/myroutines">
-						<MyRoutines baseURL={baseURL} />
+					<Route path="/profile">
+						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
 						<Activities baseURL={baseURL} />

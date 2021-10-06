@@ -34,6 +34,9 @@ main {
 	padding:10px;
 	overflow-y:auto;
 }
+section {
+	margin:10px 0;
+}
 #logReg {
 	border: 1px solid black;
 	padding:10px;
@@ -49,6 +52,9 @@ main {
 .routineListActivity {
 	margin-left:20px;
 	margin-top:10px;
+}
+.profileDivs {
+	margin:10px 0;
 }
 .activity {
 	border:1px solid black;

@@ -18,7 +18,7 @@ const Header = () => {
                 <Link className="navLink" exact to="/register">Register</Link>
                 <Link className="navLink" exact to="/login">Login</Link>
                 <Link className="navLink" exact to="/activities">Activities</Link>
-                <Link className="navLink" exact to="/myroutines">My Routines</Link>
+                <Link className="navLink" exact to="/profile">Profile</Link>
             </nav>
         </header>
 }
