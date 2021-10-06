@@ -6,6 +6,8 @@ import {
 	Header,
 	Footer,
 	Routines,
+	Register,
+	Login
 	MyRoutines,
 	Activities
 } from './components';
@@ -13,7 +15,9 @@ import {
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
-
+	const [userToken, setUserToken] = useState('')
+    const [usernameString, setUsernameString] = useState('');
+    const [passwordString, setPasswordString] = useState('');
 
 
 	return <Router>
@@ -25,6 +29,28 @@ const App = () => {
 						<div className="logReg">
 							{ isAuthenticated ? "Authenticated" : "Not Authenitcated"}
 						</div>
+					</Route>
+					<Route path="/register">
+						<Register 
+							isAuthenticated={isAuthenticated}
+							setIsAuthenticated={setIsAuthenticated}
+							userToken={userToken}
+							setUserToken={setUserToken}
+							usernameString={usernameString}
+							setUsernameString={setUsernameString}
+							passwordString={passwordString}
+							setPasswordString={setPasswordString}
+						/>
+					</Route>
+				
+					<Route path="/login">
+						<Login 
+
+							usernameString={usernameString}
+							setUsernameString={setUsernameString}
+							passwordString={passwordString}
+							setPasswordString={setPasswordString}
+						/>
 					</Route>
 					<Route path="/routines">
 						<Routines baseURL={baseURL} />
