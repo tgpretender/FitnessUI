@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {
 	Header,
 	Footer,
-	Routines,
+	Routines,git pull
 	MyRoutines,
 	Activities
 } from './components';
