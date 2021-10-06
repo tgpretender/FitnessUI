@@ -1,9 +1,11 @@
 import React from 'react';
 
-const MyRoutines = () => {
-	
+const MyRoutines = (props) => {
+	const { baseURL } = props;
+    
     return <div>
-        	<h1>MyRoutines</h1>
+            <h1>My Routines</h1>
+            <p>These are all of your routines.</p>
         </div>
 }
 

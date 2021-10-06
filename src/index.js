@@ -6,29 +6,39 @@ import {
 	Header,
 	Footer,
 	Routines,
-	MyRoutines
+	MyRoutines,
+	Activities
 } from './components';
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	//const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+	const [ isAuthenticated, setIsAuthenticated ] = useState(true);
 
 
 
 	return <Router>
-	<Header />
-	<main>
-		<Switch>
-			<Route exact path="/">
-				<h1>Home</h1>
-			</Route>
-			<Route path="/routines">
-				<Routines baseURL={baseURL} />
-			</Route>
-		</Switch>
-	</main>
-	<Footer />
-</Router>
+		<Header />
+			<main>
+				<Switch>
+					<Route exact path="/">
+						<h1>Home</h1>
+						<div className="logReg">
+							{ isAuthenticated ? "Authenticated" : "Not Authenitcated"}
+						</div>
+					</Route>
+					<Route path="/routines">
+						<Routines baseURL={baseURL} />
+					</Route>
+					<Route path="/myroutines">
+						<MyRoutines baseURL={baseURL} />
+					</Route>
+					<Route path="/activities">
+						<Activities baseURL={baseURL} />
+					</Route>
+				</Switch>
+			</main>
+		<Footer />
+	</Router>
 };
 
 ReactDOM.render(<App />, document.getElementById('app'));
