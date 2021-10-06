@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
 	
-    return <div className="header">
-        <Link exact to="/">Home</Link>
-        <Link exact to="/routines">Routines</Link>
-    </div>
+    return <header>
+        <h1>Fitness Trackr</h1>
+            <nav>
+                <Link className="navLink" exact to="/">Home</Link>
+                <Link className="navLink" exact to="/routines">Routines</Link>
+            </nav>
+        </header>
 }
 
 export default Header;
