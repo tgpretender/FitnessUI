@@ -8,7 +8,6 @@ const Login = ( ) => {
 	const [userToken, setUserToken] = useState('')
 
     function loginUser(username, password) {
-        event.preventDefault();
 
         fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
             method: 'POST',
@@ -21,16 +20,21 @@ const Login = ( ) => {
             })
         }).then(response => response.json())
             .then(result => {
-                console.log(result)
+                if(result.token){
                 setIsAuthenticated(true)
                 setUserToken(result.token)
                 localStorage.setItem('token', result.token)
                 localStorage.setItem('isLoggedIn', true)
                 localStorage.setItem('username', username)
                 location.reload();
+                
                 return result
+                } else if(!result.token){
+                    alert("Invalid username/password combination")
+                }
             })
             .catch(console.error)
+        //}
 
     };
     return (

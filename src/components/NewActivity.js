@@ -6,7 +6,7 @@ const NewActivity = (props) => {
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription] = useState('');
 
-	const sendActivity = async () => {
+	const sendActivity = async (event) => {
 		event.preventDefault;
 		const response = await fetch(`${baseURL}/activities`, {
 			method: 'POST',

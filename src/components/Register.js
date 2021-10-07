@@ -7,7 +7,8 @@ const Register = ({ setUserToken }) => {
 
 
     async function registerUser(username, password, event) {
-  
+        event.preventDefault();
+
         if (password.length < 8) {
              alert("Password Must Be At Least 8 Characters")
         }else{
