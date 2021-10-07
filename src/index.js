@@ -8,41 +8,33 @@ import {
 	Routines,
 	Register,
 	Login,
-	MyRoutines,
+	Profile,
 	Activities
 } from './components';
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [userToken, setUserToken] = useState('')
-    const [usernameString, setUsernameString] = useState('');
+	const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedIn"));
+	const [userToken, setUserToken] = useState(localStorage.getItem("token"))
+    const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
     const [passwordString, setPasswordString] = useState('');
 	const [showLog, setShowLog] = useState(true)
 
 	return <Router>
-		<Header />
+		<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUserToken={setUserToken} setUsernameString={setUsernameString} />
 			<main>
 				<Switch>
 					<Route exact path="/">
 						<div className="logReg">
-							{ isAuthenticated ? "Welcome to Fitness Trackr!" : 
-							
+							{ isAuthenticated ? `Welcome to Fitness Trackr, ${usernameString}!` : 
 							<div id="logReg">
 								{ showLog ?
 								<div>
 									<Login 
-									/*
-										isAuthenticated={isAuthenticated}
-										setIsAuthenticated={setIsAuthenticated}
-										userToken={userToken}
-										setUserToken={setUserToken}
-									*/
 										usernameString={usernameString}
 										setUsernameString={setUsernameString}
 										passwordString={passwordString}
 										setPasswordString={setPasswordString}
-
 									/>
 									<br />
 									<p>Not a member?</p>
@@ -64,7 +56,7 @@ const App = () => {
 									<br />
 									<p>Already a member?</p>
 									<br />
-									<button className="regButton" onClick={() => setShowLog(true)}>Login</button>
+									<button className="logButton" onClick={() => setShowLog(true)}>Login</button>
 									</div>
 							}
 							</div>
@@ -86,7 +78,6 @@ const App = () => {
 				
 					<Route path="/login">
 						<Login 
-
 							usernameString={usernameString}
 							setUsernameString={setUsernameString}
 							passwordString={passwordString}
@@ -94,13 +85,13 @@ const App = () => {
 						/>
 					</Route>
 					<Route path="/routines">
-						<Routines baseURL={baseURL} />
+						<Routines baseURL={baseURL} userToken={userToken}/>
 					</Route>
-					<Route path="/myroutines">
-						<MyRoutines baseURL={baseURL} />
+					<Route path="/profile">
+						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} />
+						<Activities baseURL={baseURL} userToken={userToken}/>
 					</Route>
 				</Switch>
 			</main>
