@@ -1,15 +1,13 @@
 import {useState} from 'react';
 
 const NewActivity = (props) => {
+	event.preventDefault;
 	const { baseURL, userToken } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription] = useState('');
-	const [ newCount, setNewCount ] = useState('');
-	const [ newDuration, setNewDuration ] = useState('');
 
-	const sendActivity = async() => {
-		event.preventDefault();
-
+	const sendActivity = async () => {
+		event.preventDefault;
 		const response = await fetch(`${baseURL}/activities`, {
 			method: 'POST',
 			headers: {
@@ -18,16 +16,12 @@ const NewActivity = (props) => {
 			},
 			body: JSON.stringify({
 				name: newName,
-				description: newDescription,
-				count: newCount,
-				duration: newDuration
+				description: newDescription
 			})
 		}).then(res => res.json())
 		  .then(res => console.log(res))
 		  .catch(console.error);
 	}
-
-
 
 	return <div className="newActivityForm">
 			<form onSubmit={sendActivity}>
@@ -49,24 +43,6 @@ const NewActivity = (props) => {
                     setNewDescription(event.target.value)
             }}></input>
 				<br />
-				<label>Count: </label><br />
-				<input className="newCount"
-                type="text"
-				name="count" 
-                value={newCount}
-                onChange={(event) => {
-                    setNewCount(event.target.value)
-            }}></input>
-				<br />
-				<label>Duration: </label><br />
-				<input className="newDuration"
-                type="text"
-				name="duration" 
-                value={newDuration}
-                onChange={(event) => {
-                    setNewDuration(event.target.value)
-            }}></input>
-			<br />
 			<button type= "submit">Submit</button>
 			</form>
 		</div>

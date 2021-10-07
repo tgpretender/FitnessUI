@@ -27,17 +27,14 @@ const App = () => {
 					<Route exact path="/">
 						<div className="logReg">
 							{ isAuthenticated ? `Welcome to Fitness Trackr, ${usernameString}!` : 
-							
 							<div id="logReg">
 								{ showLog ?
 								<div>
 									<Login 
-
 										usernameString={usernameString}
 										setUsernameString={setUsernameString}
 										passwordString={passwordString}
 										setPasswordString={setPasswordString}
-
 									/>
 									<br />
 									<p>Not a member?</p>
@@ -88,13 +85,13 @@ const App = () => {
 						/>
 					</Route>
 					<Route path="/routines">
-						<Routines baseURL={baseURL} />
+						<Routines baseURL={baseURL} userToken={userToken}/>
 					</Route>
 					<Route path="/profile">
 						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} />
+						<Activities baseURL={baseURL} userToken={userToken}/>
 					</Route>
 				</Switch>
 			</main>

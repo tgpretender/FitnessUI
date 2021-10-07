@@ -7,8 +7,20 @@ const NewRoutine = (props) => {
 	const [ newPublic, setNewPublic ] = useState('');
 	const [ newActivities, setNewActivity ] = useState('');
 
-	const sendRoutine = () => {
-
+	const sendRoutine = async () => {
+		const response = await fetch(`${baseURL}/routines`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${userToken}`
+			},
+			body: JSON.stringify({
+				name: newName,
+				goal: newGoal,
+			})
+		}).then(res => res.json())
+		  .then(res => console.log(res))
+		  .catch(console.error);
 	}
 
 	return <div className="newRoutineForm">

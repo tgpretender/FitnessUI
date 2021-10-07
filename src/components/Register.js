@@ -10,7 +10,7 @@ const Register = ({ setUserToken }) => {
         const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'username': username,

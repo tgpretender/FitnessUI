@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
+import {
+	NewRoutine
+} from './';
 
 const Routines = (props) => {
     //have some kind of pagination? (check art collector)
     //have a button to hide/show activities?
     //have a way to search routines for specific ones?
 
-    const { baseURL } = props;
+    const { baseURL, userToken } = props;
     const [ publicRoutines, setPublicRoutines ] = useState([]);
 
     useEffect(() => {
