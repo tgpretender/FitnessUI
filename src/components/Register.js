@@ -6,8 +6,14 @@ const Register = ({ setUserToken }) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 
-    async function registerUser(username, password) {
+    async function registerUser(username, password, event) {
     //try{
+    
+        //event.preventDefault();
+        if (password.length < 8) {
+             alert("Password Must Be At Least 8 Characters")
+        }else{
+     
         const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
             method: "POST",
             headers: {
@@ -61,7 +67,7 @@ const Register = ({ setUserToken }) => {
                     return result
                 })
                 .catch(console.error)
-            
+        }
         //catch(error){
         //    console.error(error)
         //}

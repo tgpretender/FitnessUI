@@ -8,7 +8,7 @@ const Login = ( ) => {
 	const [userToken, setUserToken] = useState('')
 
     function loginUser(username, password) {
-
+        
         fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
             method: 'POST',
             headers: {
@@ -24,6 +24,7 @@ const Login = ( ) => {
             .then(result => {
                 console.log(result)
                 setIsAuthenticated (true)
+                console.log(isAuthenticated)
                 setUserToken(result.token)
                 localStorage.setItem('token', result.token)
                 return result
