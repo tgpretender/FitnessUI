@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+    const { isAuthenticated, setIsAuthenticated, setUserToken, setUsernameString} = props;
 	//goal: have MyRoutines only show as an option if the user is logged in
     //supply it the userId to get their routines
 
@@ -10,15 +11,22 @@ const Header = () => {
     //  My Routines
     //  User profile page?
 
+    function logoutUser() {
+        setIsAuthenticated(false)
+        setUserToken('')
+        setUsernameString('')
+        localStorage.clear()
+        location.reload();
+    }
+
     return <header>
         <h1>Fitness Trackr</h1>
             <nav>
                 <Link className="navLink" exact to="/">Home</Link>
                 <Link className="navLink" exact to="/routines">Routines</Link>
-                <Link className="navLink" exact to="/register">Register</Link>
-                <Link className="navLink" exact to="/login">Login</Link>
                 <Link className="navLink" exact to="/activities">Activities</Link>
                 <Link className="navLink" exact to="/profile">Profile</Link>
+                <button onClick={() => logoutUser()}>Log Out</button>
             </nav>
         </header>
 }

@@ -8,6 +8,7 @@ const Login = ( ) => {
 	const [userToken, setUserToken] = useState('')
 
     function loginUser(username, password) {
+        event.preventDefault();
 
         fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
             method: 'POST',
@@ -15,28 +16,23 @@ const Login = ( ) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                //user: {
                     username: username,
                     password: password
-                //}
             })
         }).then(response => response.json())
             .then(result => {
                 console.log(result)
-                setIsAuthenticated (true)
+                setIsAuthenticated(true)
                 setUserToken(result.token)
                 localStorage.setItem('token', result.token)
+                localStorage.setItem('isLoggedIn', true)
+                localStorage.setItem('username', username)
+                location.reload();
                 return result
             })
             .catch(console.error)
+
     };
-
-    function logoutUser() {
-        setIsAuthenticated(false)
-        setUserToken('')
-        localStorage.clear()
-    }
-
     return (
         <>
             <div className='Login'>
@@ -64,12 +60,6 @@ const Login = ( ) => {
                 }
                 }
                 >Login</button> 
-
-                <button className="logoutBtn" onClick={() => {
-                    logoutUser()
-                }}
-                >Logout</button>
-
 
             </div>
         </>

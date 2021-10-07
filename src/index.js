@@ -14,30 +14,25 @@ import {
 
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [userToken, setUserToken] = useState('')
-    const [usernameString, setUsernameString] = useState('');
+	const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedIn"));
+	const [userToken, setUserToken] = useState(localStorage.getItem("token"))
+    const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
     const [passwordString, setPasswordString] = useState('');
 	const [showLog, setShowLog] = useState(true)
 
 	return <Router>
-		<Header isAuthenticated={isAuthenticated} />
+		<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUserToken={setUserToken} setUsernameString={setUsernameString} />
 			<main>
 				<Switch>
 					<Route exact path="/">
 						<div className="logReg">
-							{ isAuthenticated ? "Welcome to Fitness Trackr!" : 
+							{ isAuthenticated ? `Welcome to Fitness Trackr, ${usernameString}!` : 
 							
 							<div id="logReg">
 								{ showLog ?
 								<div>
 									<Login 
-									/*
-										isAuthenticated={isAuthenticated}
-										setIsAuthenticated={setIsAuthenticated}
-										userToken={userToken}
-										setUserToken={setUserToken}
-									*/
+
 										usernameString={usernameString}
 										setUsernameString={setUsernameString}
 										passwordString={passwordString}
