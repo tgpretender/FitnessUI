@@ -17,7 +17,7 @@ const Header = (props) => {
         setUsernameString('')
         localStorage.clear()
         location.reload();
-    }
+    } 
 
     return <header>
         <h1>Fitness Trackr</h1>
@@ -25,8 +25,9 @@ const Header = (props) => {
                 <Link className="navLink" exact to="/">Home</Link>
                 <Link className="navLink" exact to="/routines">Routines</Link>
                 <Link className="navLink" exact to="/activities">Activities</Link>
-                <Link className="navLink" exact to="/profile">Profile</Link>
-                <button onClick={() => logoutUser()}>Log Out</button>
+                { !isAuthenticated ? null : <Link className="navLink" exact to="/myroutines">My Routines</Link>}
+                { !isAuthenticated ? null : <button onClick={() => logoutUser()}>Log Out</button>}
+
             </nav>
         </header>
 }

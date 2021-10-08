@@ -5,7 +5,7 @@ import {
 	NewRoutine
 } from './';
 
-const Profile = (props) => {
+const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutines, setShowRoutines ] = useState(false);
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
@@ -13,7 +13,7 @@ const Profile = (props) => {
 	const [ userRoutines, setUserRoutines] = useState([]);
 
 	useEffect(() => {
-        fetch(`${baseURL}/users/:${usernameString}/routines`, {
+        fetch(`${baseURL}/users/${usernameString}/routines`, {
             method: 'GET',
             headers: {
 				'Content-Type': 'application/json',
@@ -29,27 +29,49 @@ const Profile = (props) => {
     }, []);
 
     return <div>
-        	<h1>{usernameString}'s Profile</h1>
-			<p>Here are your routines and activities. You can edit, delete, and create new routines from here.</p>
+        	<h1>{usernameString}'s Routines</h1>
+			<p>Here are your routines. You can edit, delete, and create new routines from here.</p>
 			<section className="profileSection">
 				<div className="profileDivs">
-					{ showRoutineForm ? <button className="showButton" onClick={() => setShowRoutineForm(false)}>Hide New Routine Form</button> : 
+					{ showRoutineForm ? <button className="showButton" onClick={() => setShowRoutineForm(false)}>Hide</button> : 
 					<button className="showButton" onClick={() => setShowRoutineForm(true)}>Create New Routine</button>}
 
 					{!showRoutineForm ? null : <NewRoutine baseURL={baseURL} userToken={userToken} />}
 				</div>
 				<div className="profileDivs">
-					{ showActivityForm ? <button className="showButton" onClick={() => setShowActivityForm(false)}>Hide New Activity Form</button> : 
+					{ showActivityForm ? <button className="showButton" onClick={() => setShowActivityForm(false)}>Hide</button> : 
 					<button className="showButton" onClick={() => setShowActivityForm(true)}>Create New Activity</button>}
 					{!showActivityForm ? null : <NewActivity baseURL={baseURL} userToken={userToken} />}
 				</div>
 				<div className="profileDivs">
 					<h2>My Routines</h2>
 					<br />
-					<p>"This will eventually be a list of routines."</p>
+					{ 
+						userRoutines.map((routine) => {
+							const { id, isPublic, name, goal, activities} = routine;
+							return <div key={id} className="profileRoutine"
+							>
+								{
+									isPublic ? <div className="publicRoutine">Public</div> : <div className="privateRoutine">Private</div>
+								}
+								Name: {name}<br />
+								Goal: {goal}<br />
+								Activities: {
+									activities.length === 0 ? "None" : "yes"
+								}
+								<br />
+								<button>EditRoutine</button>
+								<button>Delete Routine</button>
+								<button>Add Activity</button>
+								<button>Edit Activity</button>
+								<button>Delete Activity</button>
+
+								</div>
+						})
+					}
 				</div>
 			</section>
         </div>
 }
 
-export default Profile;
+export default MyRoutines;

@@ -6,52 +6,54 @@ const NewRoutine = (props) => {
 	const [ newName, setNewName ] = useState('');
 	const [ newGoal, setNewGoal ] = useState('');
 	const [ newPublic, setNewPublic ] = useState(false);
-	const [ newActivities, setNewActivity ] = useState('');
 
 	const activities = fetchActivities();
 
 	const sendRoutine = async() => {
 		event.preventDefault();
-		console.log("name: ", newName);
-		console.log("goal: ", newGoal);
-		console.log("public: ", newPublic);
-		console.log("activities: ", newActivities);
-		
-		// const response = await fetch(`${baseURL}/routines`, {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		'Authorization': `Bearer ${userToken}`
-		// 	},
-		// 	body: JSON.stringify({
-		// 		name: newName,
-		// 		goal: newGoal,
-		// 		isPublic: newPublic,
-		// 		activities: newActivities
-		// 	})
-		// }).then(res => res.json())
-		//   .then(res => console.log(res))
-		//   .catch(console.error);
+		const select = document.getElementById('selectedActivities');
+		const selected = [...select.options]
+			.filter(option => option.selected)
+			.map(option => option.value);
+
+		const response = await fetch(`${baseURL}/routines`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${userToken}`
+			},
+			body: JSON.stringify({
+				name: newName,
+				goal: newGoal,
+				isPublic: newPublic,
+				activities: selected
+			})
+		})
+		.then((response) => {
+            console.log("response: ",response);
+        })
+			.catch(console.error);
 	}
 
 	return <div className="newRoutineForm">
+		<h2>Create a New Routine</h2>
 		<form onSubmit={sendRoutine}>
 			<label>Name: </label><br />
-			<input className="newRoutineName"
+			<input className="newInputLine"
                 type="text"
                 value={newName}
                 onChange={(event) => {
                     setNewName(event.target.value)
             }}></input>
-			<br />
+			<br /><br />
 			<label>Goal: </label><br />
-			<input className="newGoal"
+			<input className="newInputLine"
                 type="text"
                 value={newGoal}
                 onChange={(event) => {
                     setNewGoal(event.target.value)
             }}></input>
-			<br />
+			<br /><br />
 			<label>Keep Public? </label>
 			<input type="checkbox" 
 				id="publicCheckbox"
@@ -64,29 +66,19 @@ const NewRoutine = (props) => {
 						setNewPublic(false);
 					}
 				}}></input>
-			<br />
+			<br /><br />
 			<label>Activties: </label><br />
 			<p>Hold down CTRL to select multiple activities.</p>
 			<select id="selectedActivities" name="selectedActivities" multiple size="10">
-				<option value="none">None</option>
-				<option value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+				{
+					activities.map((activity) => {
+						const { id, name } = activity;
+						return <option value={id} key={id}>{name}</option>
+					})
+				}
 			</select>
-			
-			<br />
-
-			<button type= "submit">Submit</button>
+			<br /><br />
+			<button id="routineSubmit" type="submit">Submit</button>
 		</form>
 	</div>
 }

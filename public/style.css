@@ -12,6 +12,14 @@ body {
 h1 {
 	margin-bottom: 10px;
 }
+button, .navLink {
+	background-color:white;
+	margin: 0 5px;
+	padding:5px;
+	border:1px solid gray;
+	border-radius: 5px;
+	text-decoration:none;
+}
 #app {
 	display: grid;
     grid-template-columns: 1fr;
@@ -26,9 +34,7 @@ header {
 	background-color:cornflowerblue;
 	text-align:center;
 }
-.navLink {
-	margin:5px;
-}
+
 main {
 	grid-row:2;
 	padding:10px;
@@ -44,7 +50,7 @@ section {
 .routineList {
 	margin-top:10px;
 }
-.routine {
+.routine, .activity, .profileRoutine {
 	border:1px solid black;
 	margin:10px 0;
 	padding:10px
@@ -53,13 +59,30 @@ section {
 	margin-left:20px;
 	margin-top:10px;
 }
+label {
+	font-weight:bold;
+	margin-bottom:5px;
+}
+#selectedActivities, .newInputLine {
+	width: 90%;
+	max-width: 500px;
+	padding:3px;
+}
 .profileDivs {
 	margin:10px 0;
 }
-.activity {
-	border:1px solid black;
-	margin:10px 0;
-	padding:10px
+.publicRoutine, .privateRoutine {
+	position: absolute;
+	padding:5px;
+	right:20px;
+	width:60px;
+	text-align: center;
+}
+.publicRoutine {
+	background-color:green;
+}
+.privateRoutine {
+	background-color:red;
 }
 footer {
 	grid-row:3;

@@ -8,10 +8,9 @@ import {
 	Routines,
 	Register,
 	Login,
-	Profile,
+	MyRoutines,
 	Activities,
-	NewRoutine,
-	utils
+	NewRoutine
 } from './components';
 
 const App = () => {
@@ -89,14 +88,14 @@ const App = () => {
 					<Route path="/routines">
 						<Routines baseURL={baseURL} userToken={userToken}/>
 					</Route>
-					<Route path="/profile">
-						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
+					<Route path="/myroutines">
+						<MyRoutines baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} userToken={userToken}/>
+						<Activities userToken={userToken}/>
 					</Route>
 					<Route path="/newroutine">
-						<NewRoutine baseURL={baseURL} userToken={userToken}/>
+						<NewRoutine userToken={userToken}/>
 					</Route>
 				</Switch>
 			</main>
