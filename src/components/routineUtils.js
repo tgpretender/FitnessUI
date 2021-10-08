@@ -2,8 +2,9 @@ import {useEffect, useState} from 'react';
 
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 
-async function editRoutine(id, userToken) {
+async function editRoutine(id, userToken, name, goal, isPublic) {
 	const ID = id.id;
+
 	const response = await fetch(`${baseURL}/routines/${ID}`, {
 		method: "PATCH",
 		headers: {
@@ -11,9 +12,9 @@ async function editRoutine(id, userToken) {
 			'Authorization': `Bearer ${userToken}`
 		  },
 		body: {
-			name: newName,
-			goal: newGoal,
-			isPublic: newPublic
+			name: name,
+			goal: goal,
+			isPublic: isPublic
 		}
 	})
 		.then(res => res.json())
@@ -26,6 +27,7 @@ async function editRoutine(id, userToken) {
 			// }
 		})
 		.catch(err => console.error(err));
+		return response;
 }
 
 async function deleteRoutine(id, userToken) {

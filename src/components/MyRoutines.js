@@ -5,7 +5,7 @@ import {
 	NewRoutine,
 	fetchLoggedInUserRoutines,
 	deleteRoutine,
-	editRoutine
+	EditRoutine
 } from './';
 
 const MyRoutines = (props) => {
@@ -67,7 +67,7 @@ const MyRoutines = (props) => {
 								{ !showEdit  ? null : 
 								<div className="routineEditForm">
 									<br />
-									yes
+									<EditRoutine baseURL={baseURL} userToken={userToken} id={id}/>
 								</div>}<br />
 								<button onClick={() => deleteRoutine({id}, userToken)}>Delete Routine</button>
 								<br /><br />

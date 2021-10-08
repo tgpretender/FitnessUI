@@ -34,7 +34,7 @@ const NewRoutine = (props) => {
 			.catch(console.error);
 
 		//second fetch for activties
-		
+		//add to routineUtils when i'm finished making it work
 	
 	}
 
