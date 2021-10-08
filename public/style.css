@@ -52,7 +52,7 @@ section {
 .routineList {
 	margin-top:10px;
 }
-.routine {
+.routine, .activity, .profileRoutine {
 	border:1px solid black;
 	margin:10px 0;
 	padding:10px
@@ -72,11 +72,6 @@ label {
 }
 .profileDivs {
 	margin:10px 0;
-}
-.activity {
-	border:1px solid black;
-	margin:10px 0;
-	padding:10px
 }
 footer {
 	grid-row:3;

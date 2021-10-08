@@ -13,7 +13,7 @@ const MyRoutines = (props) => {
 	const [ userRoutines, setUserRoutines] = useState([]);
 
 	useEffect(() => {
-        fetch(`${baseURL}/users/:${usernameString}/routines`, {
+        fetch(`${baseURL}/users/${usernameString}/routines`, {
             method: 'GET',
             headers: {
 				'Content-Type': 'application/json',
@@ -46,7 +46,19 @@ const MyRoutines = (props) => {
 				<div className="profileDivs">
 					<h2>My Routines</h2>
 					<br />
-					<p>"This will eventually be a list of routines."</p>
+					{ 
+						userRoutines.map((routine) => {
+							const { id, isPublic, name, goal, activities} = routine;
+
+							return <div key={id} className="profileRoutine">
+								Name: {name}<br />
+								Goal: {goal}<br />
+								Activities: {
+									activities.length === 0 ? "None" : "yes"
+								}
+								</div>
+						})
+					}
 				</div>
 			</section>
         </div>
