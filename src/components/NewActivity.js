@@ -1,13 +1,11 @@
 import {useState} from 'react';
 
 const NewActivity = (props) => {
-	event.preventDefault;
 	const { baseURL, userToken } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription] = useState('');
 
 	const sendActivity = async (event) => {
-		event.preventDefault;
 		const response = await fetch(`${baseURL}/activities`, {
 			method: 'POST',
 			headers: {
