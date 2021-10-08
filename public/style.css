@@ -53,6 +53,11 @@ section {
 	margin-left:20px;
 	margin-top:10px;
 }
+#selectedActivities {
+	width: 90%;
+	max-width: 500px;
+	padding:3px;
+}
 .profileDivs {
 	margin:10px 0;
 }

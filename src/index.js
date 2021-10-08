@@ -93,10 +93,10 @@ const App = () => {
 						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} userToken={userToken}/>
+						<Activities userToken={userToken}/>
 					</Route>
 					<Route path="/newroutine">
-						<NewRoutine baseURL={baseURL} userToken={userToken}/>
+						<NewRoutine userToken={userToken}/>
 					</Route>
 				</Switch>
 			</main>

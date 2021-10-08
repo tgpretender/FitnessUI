@@ -10,6 +10,8 @@ const NewRoutine = (props) => {
 
 	const activities = fetchActivities();
 
+	
+
 	const sendRoutine = async() => {
 		event.preventDefault();
 		console.log("name: ", newName);
@@ -69,19 +71,12 @@ const NewRoutine = (props) => {
 			<p>Hold down CTRL to select multiple activities.</p>
 			<select id="selectedActivities" name="selectedActivities" multiple size="10">
 				<option value="none">None</option>
-				<option value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+				{
+					activities.map((activity, index) => {
+						const { id, name } = activity;
+						return <option value={name} key={id}>{name}</option>
+					})
+				}
 			</select>
 			
 			<br />
