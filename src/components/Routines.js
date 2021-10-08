@@ -6,12 +6,12 @@ const Routines = (props) => {
     //have a button to hide/show activities?
     //have a way to search routines for specific ones?
 
-    const { baseURL, userToken } = props;
+    const { userToken } = props;
     const routines = fetchRoutines();
 
     return <div className="routines">
         <h1>Routines</h1>
-        {!userToken ? null : <NewRoutine baseURL={baseURL} userToken={userToken} /> }
+        {!userToken ? null : <NewRoutine userToken={userToken} /> }
         <br />
         <p>These are all the publically available routines.</p>
         <div className="routineList">
