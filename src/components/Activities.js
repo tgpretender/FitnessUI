@@ -3,24 +3,7 @@ import { NewActivity, fetchActivities} from './';
 
 const Activities = (props) => {
 	//let people search for routines that include a specific activitiy?
-	const { baseURL, userToken } = props;
-	const [ publicActivities, setPublicActivities ] = useState([]);
-	const [ newName, setNewName ] = useState('');
-	const [ newDescription, setNewDescription] = useState('');
-    
-    useEffect(() => {
-        fetch(`${baseURL}/activities`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then(res => res.json())
-        .then((res) => {
-            const response = res;
-            setPublicActivities(response);
-        })
-        .catch(err => console.error(err))
-    }, []);
-
+	const { userToken } = props;
     const activities = fetchActivities();
     
     return <div className="activities">

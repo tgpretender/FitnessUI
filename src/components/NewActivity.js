@@ -1,26 +1,36 @@
 import {useState} from 'react';
 
 const NewActivity = (props) => {
-	const { baseURL, userToken } = props;
+	const { userToken } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription] = useState('');
 
-	const sendActivity = async () => {
-		const response = await fetch(`${baseURL}/activities`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${userToken}`
-			},
-			body: JSON.stringify({
-				name: newName,
-				description: newDescription
-			})
-		}).then(res => res.json())
-		  .then(res => console.log(res))
-		  
-		  .catch(console.error);
-	}
+async function sendActivity() {
+	console.log('sendActivity is running')
+    const activityObj = {
+        "name": newName,
+        "description": newDescription
+    }
+    try {
+        const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + userToken
+            },
+            body: JSON.stringify(
+                activityObj
+            )
+        })
+        const data = await response.json();
+		console.log(data)
+
+        return data
+    } catch (error) {
+		console.log('sendActivity is not running')
+        console.error(error);
+    }
+}
 
 	return <div className="newActivityForm">
 			<form onSubmit={sendActivity}>
