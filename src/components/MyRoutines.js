@@ -3,61 +3,19 @@ import {useState} from 'react';
 import {
 	NewActivity,
 	NewRoutine,
-	fetchLoggedInUserRoutines
+	fetchLoggedInUserRoutines,
+	deleteRoutine,
+	editRoutine
 } from './';
 
 const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
+	const [ showEdit, setShowEdit] = useState(true)
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
-	async function editRoutine(id) {
-		const ID = id.id;
-		const response = await fetch(`${baseURL}/routines/${ID}`, {
-			method: "PATCH",
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${userToken}`
-			  },
-			body: {
-				name: newName,
-				goal: newGoal,
-				isPublic: newPublic
-			}
-		})
-			.then(res => res.json())
-            .then((result) => { 
-				console.log(result);
-                // if(result.ok === true){
-                //     return location.reload()
-                // } else {
-                //     alert("You do not have permission to edit this routine!");
-                // }
-            })
-            .catch(err => console.error(err));
-	}
-
-	async function deleteRoutine(id) {
-		const ID = id.id;
-		const response = await fetch(`${baseURL}/routines/${ID}`, {
-            method: "DELETE",
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${userToken}`
-            }
-    	})
-            .then(res => res.json())
-            .then((result) => { 
-                if(result.ok === true){
-                    return location.reload()
-                } else {
-                    alert("You do not have permission to delete this routine!");
-                }
-            })
-            .catch(err => console.error(err));
-    }
 	
 	const addActivity = () => {
 		//add activity without replacing the others
@@ -102,14 +60,23 @@ const MyRoutines = (props) => {
 								}
 								Name: {name}<br />
 								Goal: {goal}<br />
+								{ showEdit ? <button className="showButton" onClick={() => setShowEdit(false)}>Hide</button> : 
+								<button className="showButton" onClick={() => setShowEdit(true)}>Edit Routine</button>}
+								
+
+								{ !showEdit  ? null : 
+								<div className="routineEditForm">
+									<br />
+									yes
+								</div>}<br />
+								<button onClick={() => deleteRoutine({id}, userToken)}>Delete Routine</button>
+								<br /><br />
 								Activities: {
 									activities.length === 0 ? "None" : "yes"
 								}
 								<br /><br />
-								<button>Edit Routine</button>
-								<button onClick={() => deleteRoutine({id})}>Delete Routine</button>
-								<button>Add Activity</button>
-								<button>Edit Activity</button>
+								<button>Add Activity</button><br />
+								<button>Edit Activity</button><br />
 								<button>Delete Activity</button>
 
 								</div>

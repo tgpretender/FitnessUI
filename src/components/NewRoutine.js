@@ -26,13 +26,16 @@ const NewRoutine = (props) => {
 				name: newName,
 				goal: newGoal,
 				isPublic: newPublic,
-				activities: { selected }
 			})
 		})
 		.then((response) => {
             console.log("response: ",response);
         })
 			.catch(console.error);
+
+		//second fetch for activties
+		
+	
 	}
 
 	return <div className="newRoutineForm">
