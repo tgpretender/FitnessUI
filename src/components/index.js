@@ -7,3 +7,5 @@ export { default as Profile } from './Profile';
 export { default as Activities } from './Activities';
 export { default as NewActivity } from './NewActivity';
 export { default as NewRoutine } from './NewRoutine';
+export { fetchRoutines, fetchActivities } from './utils';
+

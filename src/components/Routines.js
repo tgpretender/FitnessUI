@@ -1,36 +1,22 @@
-import { useState, useEffect } from 'react';
-import {
-	NewRoutine
-} from './';
+import React from 'react';
+import { NewRoutine, fetchRoutines } from './';
 
 const Routines = (props) => {
     //have some kind of pagination? (check art collector)
     //have a button to hide/show activities?
     //have a way to search routines for specific ones?
 
-    const { baseURL, userToken } = props;
-    const [ publicRoutines, setPublicRoutines ] = useState([]);
-
-    useEffect(() => {
-        fetch(`${baseURL}/routines`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then(res => res.json())
-        .then((res) => {
-            const response = res;
-            setPublicRoutines(response);
-        })
-        .catch(err => console.error(err))
-    }, []);
+    const { userToken } = props;
+    const routines = fetchRoutines();
 
     return <div className="routines">
         <h1>Routines</h1>
+        {!userToken ? null : <NewRoutine userToken={userToken} /> }
+        <br />
         <p>These are all the publically available routines.</p>
         <div className="routineList">
-
             {
-                publicRoutines.map((routine,index) => {
+                routines.map((routine,index) => {
                     const { id: routineId, creatorName, name: routineName, goal, activities } = routine;
             
                     return <div key={routineId} className="routine">

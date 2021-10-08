@@ -27,7 +27,6 @@ const Profile = (props) => {
         })
         .catch(err => console.error(err))
     }, []);
-	console.log(userRoutines)
 
     return <div>
         	<h1>{usernameString}'s Profile</h1>

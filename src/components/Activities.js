@@ -1,9 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-
-import {
-	NewActivity
-} from './';
+import { NewActivity, fetchActivities} from './';
 
 const Activities = (props) => {
 	//let people search for routines that include a specific activitiy?
@@ -24,17 +20,19 @@ const Activities = (props) => {
         })
         .catch(err => console.error(err))
     }, []);
+	const { userToken } = props;
+    const activities = fetchActivities();
     
     return <div className="activities">
             <h1>Activities</h1>
-            <p>These are all of the activities.</p>
             <div>
-                {!userToken ? null : <NewActivity 
-                    baseURL={baseURL} userToken={userToken} newName={newName} setNewName={setNewName} newDescription={newDescription} setNewDescription={setNewDescription} /> }
+                {!userToken ? null : <NewActivity userToken={userToken} /> }
             </div>
+            <br />
+            <p>These are all of the activities.</p>
 			<div className="activitiesList">
 				{
-					publicActivities.map((activity,index) => {
+					activities.map((activity,index) => {
 						const { id, name, description } = activity;
 						return <div key={id} className="activity">
 							Name: {name}<br />
