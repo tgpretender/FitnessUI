@@ -10,8 +10,7 @@ import {
 	Login,
 	MyRoutines,
 	Activities,
-	NewRoutine,
-	utils
+	NewRoutine
 } from './components';
 
 const App = () => {

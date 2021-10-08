@@ -6,19 +6,20 @@ const NewRoutine = (props) => {
 	const [ newName, setNewName ] = useState('');
 	const [ newGoal, setNewGoal ] = useState('');
 	const [ newPublic, setNewPublic ] = useState(false);
-	const [ newActivities, setNewActivity ] = useState('');
 
 	const activities = fetchActivities();
-
-
 
 	const sendRoutine = async() => {
 		event.preventDefault();
 		console.log("name: ", newName);
 		console.log("goal: ", newGoal);
 		console.log("public: ", newPublic);
-		console.log("activities: ", newActivities);
-		
+
+		const select = document.getElementById('selectedActivities');
+		const selected = [...select.options]
+			.filter(option => option.selected)
+			.map(option => option.value);
+		console.log("activities: ",selected);
 		// const response = await fetch(`${baseURL}/routines`, {
 		// 	method: 'POST',
 		// 	headers: {
@@ -73,14 +74,14 @@ const NewRoutine = (props) => {
 			<select id="selectedActivities" name="selectedActivities" multiple size="10">
 				<option value="none">None</option>
 				{
-					activities.map((activity, index) => {
+					activities.map((activity) => {
 						const { id, name } = activity;
-						return <option value={name} key={id}>{name}</option>
+						return <option value={id} key={id}>{name}</option>
 					})
 				}
 			</select>
 			<br /><br />
-			<button type="submit">Submit</button>
+			<button id="routineSubmit" type="submit">Submit</button>
 		</form>
 	</div>
 }
