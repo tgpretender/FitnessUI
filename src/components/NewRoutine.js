@@ -80,7 +80,7 @@ const NewRoutine = (props) => {
 				}
 			</select>
 			<br /><br />
-			<button type= "submit">Submit</button>
+			<button type="submit">Submit</button>
 		</form>
 	</div>
 }

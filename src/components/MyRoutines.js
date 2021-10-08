@@ -39,7 +39,7 @@ const MyRoutines = (props) => {
 					{!showRoutineForm ? null : <NewRoutine baseURL={baseURL} userToken={userToken} />}
 				</div>
 				<div className="profileDivs">
-					{ showActivityForm ? <button className="showButton" onClick={() => setShowActivityForm(false)}>Hide New Activity Form</button> : 
+					{ showActivityForm ? <button className="showButton" onClick={() => setShowActivityForm(false)}>Hide</button> : 
 					<button className="showButton" onClick={() => setShowActivityForm(true)}>Create New Activity</button>}
 					{!showActivityForm ? null : <NewActivity baseURL={baseURL} userToken={userToken} />}
 				</div>
