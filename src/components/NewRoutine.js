@@ -11,30 +11,28 @@ const NewRoutine = (props) => {
 
 	const sendRoutine = async() => {
 		event.preventDefault();
-		console.log("name: ", newName);
-		console.log("goal: ", newGoal);
-		console.log("public: ", newPublic);
-
 		const select = document.getElementById('selectedActivities');
 		const selected = [...select.options]
 			.filter(option => option.selected)
 			.map(option => option.value);
-		console.log("activities: ",selected);
-		// const response = await fetch(`${baseURL}/routines`, {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		'Authorization': `Bearer ${userToken}`
-		// 	},
-		// 	body: JSON.stringify({
-		// 		name: newName,
-		// 		goal: newGoal,
-		// 		isPublic: newPublic,
-		// 		activities: newActivities
-		// 	})
-		// }).then(res => res.json())
-		//   .then(res => console.log(res))
-		//   .catch(console.error);
+
+		const response = await fetch(`${baseURL}/routines`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${userToken}`
+			},
+			body: JSON.stringify({
+				name: newName,
+				goal: newGoal,
+				isPublic: newPublic,
+				activities: selected
+			})
+		})
+		.then((response) => {
+            console.log("response: ",response);
+        })
+			.catch(console.error);
 	}
 
 	return <div className="newRoutineForm">
@@ -72,7 +70,6 @@ const NewRoutine = (props) => {
 			<label>Activties: </label><br />
 			<p>Hold down CTRL to select multiple activities.</p>
 			<select id="selectedActivities" name="selectedActivities" multiple size="10">
-				<option value="none">None</option>
 				{
 					activities.map((activity) => {
 						const { id, name } = activity;
