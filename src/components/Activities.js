@@ -9,7 +9,9 @@ const Activities = (props) => {
 	//let people search for routines that include a specific activitiy?
 	const { baseURL, userToken } = props;
 	const [ publicActivities, setPublicActivities ] = useState([]);
-
+	const [ newName, setNewName ] = useState('');
+	const [ newDescription, setNewDescription] = useState('');
+    
     useEffect(() => {
         fetch(`${baseURL}/activities`, {
             method: 'GET',
@@ -27,7 +29,8 @@ const Activities = (props) => {
             <h1>Activities</h1>
             <p>These are all of the activities.</p>
             <div>
-                {!userToken ? null : <NewActivity baseURL={baseURL} userToken={userToken} /> }
+                {!userToken ? null : <NewActivity 
+                    baseURL={baseURL} userToken={userToken} newName={newName} setNewName={setNewName} newDescription={newDescription} setNewDescription={setNewDescription} /> }
             </div>
 			<div className="activitiesList">
 				{
