@@ -20,7 +20,7 @@ const Activities = (props) => {
         })
         .catch(err => console.error(err))
     }, []);
-	const { userToken } = props;
+
     const activities = fetchActivities();
     
     return <div className="activities">
