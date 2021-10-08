@@ -20,6 +20,9 @@ button, .navLink {
 	border-radius: 5px;
 	text-decoration:none;
 }
+button:active, .navLink:active {
+	border-width: 2px;
+}
 #app {
 	display: grid;
     grid-template-columns: 1fr;
@@ -72,9 +75,7 @@ label {
 	margin:10px 0;
 }
 .publicRoutine, .privateRoutine {
-	position: absolute;
 	padding:5px;
-	right:20px;
 	width:60px;
 	text-align: center;
 }

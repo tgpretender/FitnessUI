@@ -26,7 +26,7 @@ const NewRoutine = (props) => {
 				name: newName,
 				goal: newGoal,
 				isPublic: newPublic,
-				activities: selected
+				activities: { selected }
 			})
 		})
 		.then((response) => {

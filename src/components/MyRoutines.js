@@ -13,15 +13,55 @@ const MyRoutines = (props) => {
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
-	const editRoutine = () => {
-		//edit the name, goal, or public status of the routine
-		//patch request
+	async function editRoutine(id) {
+		const ID = id.id;
+		const response = await fetch(`${baseURL}/routines/${ID}`, {
+			method: "PATCH",
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${userToken}`
+			  },
+			body: {
+				name: newName,
+				goal: newGoal,
+				isPublic: newPublic
+			}
+		})
+			.then(res => res.json())
+            .then((result) => { 
+				console.log(result);
+                // if(result.ok === true){
+                //     return location.reload()
+                // } else {
+                //     alert("You do not have permission to edit this routine!");
+                // }
+            })
+            .catch(err => console.error(err));
 	}
-	const deleteRoutine = () => {
-		//delete the routine
-	}
+
+	async function deleteRoutine(id) {
+		const ID = id.id;
+		const response = await fetch(`${baseURL}/routines/${ID}`, {
+            method: "DELETE",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${userToken}`
+            }
+    	})
+            .then(res => res.json())
+            .then((result) => { 
+                if(result.ok === true){
+                    return location.reload()
+                } else {
+                    alert("You do not have permission to delete this routine!");
+                }
+            })
+            .catch(err => console.error(err));
+    }
+	
 	const addActivity = () => {
 		//add activity without replacing the others
+		//set count and duration
 		//STRETCH: only show activities not currently on the routine
 	}
 	const editActivity = () => {
@@ -67,7 +107,7 @@ const MyRoutines = (props) => {
 								}
 								<br /><br />
 								<button>Edit Routine</button>
-								<button>Delete Routine</button>
+								<button onClick={() => deleteRoutine({id})}>Delete Routine</button>
 								<button>Add Activity</button>
 								<button>Edit Activity</button>
 								<button>Delete Activity</button>
