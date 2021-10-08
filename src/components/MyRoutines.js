@@ -59,6 +59,13 @@ const MyRoutines = (props) => {
 								Activities: {
 									activities.length === 0 ? "None" : "yes"
 								}
+								<br />
+								<button>EditRoutine</button>
+								<button>Delete Routine</button>
+								<button>Add Activity</button>
+								<button>Edit Activity</button>
+								<button>Delete Activity</button>
+
 								</div>
 						})
 					}
