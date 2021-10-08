@@ -16,10 +16,11 @@ import {
 const App = () => {
 	const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 	const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedIn"));
-	const [userToken, setUserToken] = useState(localStorage.getItem("token"))
+	const [userToken, setUserToken] = useState(localStorage.getItem("token"));
     const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
     const [passwordString, setPasswordString] = useState('');
-	const [showLog, setShowLog] = useState(true)
+	const [showLog, setShowLog] = useState(true);
+    const [ allActivities, setAllActivities ] = useState([]);
 
 	return <Router>
 		<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUserToken={setUserToken} setUsernameString={setUsernameString} />
@@ -92,7 +93,7 @@ const App = () => {
 						<MyRoutines baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities userToken={userToken}/>
+						<Activities userToken={userToken} allActivities={allActivities} setAllActivities={setAllActivities}/>
 					</Route>
 					<Route path="/newroutine">
 						<NewRoutine userToken={userToken}/>
