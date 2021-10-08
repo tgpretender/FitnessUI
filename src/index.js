@@ -8,7 +8,7 @@ import {
 	Routines,
 	Register,
 	Login,
-	Profile,
+	MyRoutines,
 	Activities,
 	NewRoutine,
 	utils
@@ -89,8 +89,8 @@ const App = () => {
 					<Route path="/routines">
 						<Routines baseURL={baseURL} userToken={userToken}/>
 					</Route>
-					<Route path="/profile">
-						<Profile baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
+					<Route path="/myroutines">
+						<MyRoutines baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
 						<Activities userToken={userToken}/>

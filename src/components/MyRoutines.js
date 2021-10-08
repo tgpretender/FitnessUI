@@ -5,7 +5,7 @@ import {
 	NewRoutine
 } from './';
 
-const Profile = (props) => {
+const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutines, setShowRoutines ] = useState(false);
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
@@ -29,11 +29,11 @@ const Profile = (props) => {
     }, []);
 
     return <div>
-        	<h1>{usernameString}'s Profile</h1>
-			<p>Here are your routines and activities. You can edit, delete, and create new routines from here.</p>
+        	<h1>{usernameString}'s Routines</h1>
+			<p>Here are your routines. You can edit, delete, and create new routines from here.</p>
 			<section className="profileSection">
 				<div className="profileDivs">
-					{ showRoutineForm ? <button className="showButton" onClick={() => setShowRoutineForm(false)}>Hide New Routine Form</button> : 
+					{ showRoutineForm ? <button className="showButton" onClick={() => setShowRoutineForm(false)}>Hide</button> : 
 					<button className="showButton" onClick={() => setShowRoutineForm(true)}>Create New Routine</button>}
 
 					{!showRoutineForm ? null : <NewRoutine baseURL={baseURL} userToken={userToken} />}
@@ -52,4 +52,4 @@ const Profile = (props) => {
         </div>
 }
 
-export default Profile;
+export default MyRoutines;

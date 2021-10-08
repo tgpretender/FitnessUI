@@ -10,7 +10,7 @@ const NewRoutine = (props) => {
 
 	const activities = fetchActivities();
 
-	
+
 
 	const sendRoutine = async() => {
 		event.preventDefault();
@@ -37,23 +37,24 @@ const NewRoutine = (props) => {
 	}
 
 	return <div className="newRoutineForm">
+		<h2>Create a New Routine</h2>
 		<form onSubmit={sendRoutine}>
 			<label>Name: </label><br />
-			<input className="newRoutineName"
+			<input className="newInputLine"
                 type="text"
                 value={newName}
                 onChange={(event) => {
                     setNewName(event.target.value)
             }}></input>
-			<br />
+			<br /><br />
 			<label>Goal: </label><br />
-			<input className="newGoal"
+			<input className="newInputLine"
                 type="text"
                 value={newGoal}
                 onChange={(event) => {
                     setNewGoal(event.target.value)
             }}></input>
-			<br />
+			<br /><br />
 			<label>Keep Public? </label>
 			<input type="checkbox" 
 				id="publicCheckbox"
@@ -66,7 +67,7 @@ const NewRoutine = (props) => {
 						setNewPublic(false);
 					}
 				}}></input>
-			<br />
+			<br /><br />
 			<label>Activties: </label><br />
 			<p>Hold down CTRL to select multiple activities.</p>
 			<select id="selectedActivities" name="selectedActivities" multiple size="10">
@@ -78,9 +79,7 @@ const NewRoutine = (props) => {
 					})
 				}
 			</select>
-			
-			<br />
-
+			<br /><br />
 			<button type= "submit">Submit</button>
 		</form>
 	</div>
