@@ -73,6 +73,19 @@ label {
 .profileDivs {
 	margin:10px 0;
 }
+.publicRoutine, .privateRoutine {
+	position: absolute;
+	padding:5px;
+	right:20px;
+	width:60px;
+	text-align: center;
+}
+.publicRoutine {
+	background-color:green;
+}
+.privateRoutine {
+	background-color:red;
+}
 footer {
 	grid-row:3;
 	background-color:cornflowerblue;

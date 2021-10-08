@@ -49,8 +49,11 @@ const MyRoutines = (props) => {
 					{ 
 						userRoutines.map((routine) => {
 							const { id, isPublic, name, goal, activities} = routine;
-
-							return <div key={id} className="profileRoutine">
+							return <div key={id} className="profileRoutine"
+							>
+								{
+									isPublic ? <div className="publicRoutine">Public</div> : <div className="privateRoutine">Private</div>
+								}
 								Name: {name}<br />
 								Goal: {goal}<br />
 								Activities: {
