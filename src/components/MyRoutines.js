@@ -1,32 +1,38 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 import {
 	NewActivity,
-	NewRoutine
+	NewRoutine,
+	fetchLoggedInUserRoutines
 } from './';
 
 const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
-	const [ showRoutines, setShowRoutines ] = useState(false);
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
-	const [ userRoutines, setUserRoutines] = useState([]);
 
-	useEffect(() => {
-        fetch(`${baseURL}/users/${usernameString}/routines`, {
-            method: 'GET',
-            headers: {
-				'Content-Type': 'application/json',
-				'Authorization': `Bearer ${userToken}`
-			}
-        })
-        .then(res => res.json())
-        .then((res) => {
-            const response = res;
-            setUserRoutines(response);
-        })
-        .catch(err => console.error(err))
-    }, []);
+	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
+
+	const editRoutine = () => {
+		//edit the name, goal, or public status of the routine
+		//patch request
+	}
+	const deleteRoutine = () => {
+		//delete the routine
+	}
+	const addActivity = () => {
+		//add activity without replacing the others
+		//STRETCH: only show activities not currently on the routine
+	}
+	const editActivity = () => {
+		//edit the duration or count of an activity
+		//patch request
+	}
+	const deleteActivity = () => {
+		//delete activity from the routine
+	}
+
+
 
     return <div>
         	<h1>{usernameString}'s Routines</h1>
@@ -47,7 +53,7 @@ const MyRoutines = (props) => {
 					<h2>My Routines</h2>
 					<br />
 					{ 
-						userRoutines.map((routine) => {
+						routines.map((routine) => {
 							const { id, isPublic, name, goal, activities} = routine;
 							return <div key={id} className="profileRoutine"
 							>
@@ -59,8 +65,8 @@ const MyRoutines = (props) => {
 								Activities: {
 									activities.length === 0 ? "None" : "yes"
 								}
-								<br />
-								<button>EditRoutine</button>
+								<br /><br />
+								<button>Edit Routine</button>
 								<button>Delete Routine</button>
 								<button>Add Activity</button>
 								<button>Edit Activity</button>

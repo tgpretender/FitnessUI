@@ -36,7 +36,50 @@ const fetchActivities = () => {
 	return publicActivities;
 }
 
+const fetchLoggedInUserRoutines = (usernameString, userToken) => {
+	const [ userRoutines, setUserRoutines] = useState([]);
+	useEffect(() => {
+        fetch(`${baseURL}/users/${usernameString}/routines`, {
+            method: 'GET',
+            headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${userToken}`
+			}
+        })
+        .then(res => res.json())
+        .then((res) => {
+            const response = res;
+            setUserRoutines(response);
+        })
+        .catch(err => console.error(err))
+    }, []);
+	return userRoutines;
+}
+
+
+//for Routines stretch goal to get a clicked user's public routines
+const fetchUserRoutines = (username) => {
+	const [ userRoutines, setUserRoutines] = useState([]);
+	useEffect(() => {
+        fetch(`${baseURL}/users/${usernameString}/routines`, {
+            method: 'GET',
+            headers: {
+				'Content-Type': 'application/json'
+			}
+        })
+        .then(res => res.json())
+        .then((res) => {
+            const response = res;
+            setUserRoutines(response);
+        })
+        .catch(err => console.error(err))
+    }, []);
+	return userRoutines;
+}
+
 export {
 	fetchRoutines,
-	fetchActivities
+	fetchActivities,
+	fetchUserRoutines,
+	fetchLoggedInUserRoutines
 };
