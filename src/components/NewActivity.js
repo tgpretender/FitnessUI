@@ -6,7 +6,6 @@ const NewActivity = (props) => {
 	const [ newDescription, setNewDescription] = useState('');
 
 async function sendActivity() {
-	console.log('sendActivity is running')
     const activityObj = {
         name: newName,
         description: newDescription

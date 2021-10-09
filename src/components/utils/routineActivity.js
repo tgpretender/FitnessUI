@@ -21,7 +21,7 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 	.catch(console.error)
 	});
 }
-
+/*
 const editRoutineActivity = () => {
 
 }
@@ -29,9 +29,9 @@ const editRoutineActivity = () => {
 const deleteRoutineActivity = () => {
 
 }
-
+*/
 export { 
 	addRoutineActivity,
-	editRoutineActivity,
-	deleteRoutineActivity
+//	editRoutineActivity,
+//	deleteRoutineActivity
 };
