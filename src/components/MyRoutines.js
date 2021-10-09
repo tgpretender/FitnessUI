@@ -5,14 +5,16 @@ import {
 	NewRoutine,
 	fetchLoggedInUserRoutines,
 	deleteRoutine,
-	EditRoutine
+	EditRoutine,
+	NewRoutineActivity
 } from './';
 
 const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
-	const [ showEdit, setShowEdit] = useState(false)
+	const [ showEditRoutine, setShowEditRoutine] = useState(false);
+	const [ showAddActivity, setShowAddActivity] = useState(false);
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
@@ -43,26 +45,49 @@ const MyRoutines = (props) => {
 									isPublic ? <div className="publicRoutine">Public</div> : <div className="privateRoutine">Private</div>
 								}
 								Name: {name}<br />
-								Goal: {goal}<br />
-								{ showEdit ? <button className="showButton" onClick={() => setShowEdit(false)}>Hide</button> : 
-								<button className="showButton" onClick={() => setShowEdit(true)}>Edit Routine</button>}
-								
+								Goal: {goal}
+								<br /><br />
 
-								{ !showEdit  ? null : 
+								{ showEditRoutine ? <button className="showButton" onClick={() => setShowEditRoutine(false)}>Hide</button> : 
+								<button className="showButton" onClick={() => setShowEditRoutine(true)}>Edit Routine</button>}
+								{ !showEditRoutine  ? null : 
 								<div className="routineEditForm">
 									<br />
 									<EditRoutine userToken={userToken} id={id}/>
 								</div>}<br />
 								<button onClick={() => deleteRoutine({id}, userToken)}>Delete Routine</button>
 								<br /><br />
+
 								Activities: {
-									activities.length === 0 ? "None" : "yes"
+									activities.length === 0 ? "None" : 
+									<div>
+										{ 
+											activities.map((activity) => {
+												const { routineActivityId, name, descrition, count, duration  } = activity;
+												return <div key={routineActivityId}>
+													Name: {name}<br />
+													Description: {descrition}<br />
+													Count: {count}<br />
+													Duration: {duration}
+													<br /><br />
+													<button>Edit Activity</button><br />
+													<button>Delete Activity</button>
+													<br /><br />
+												</div>
+											})
+										}
+									</div>
 								}
 								<br /><br />
-								<button>Add Activity</button><br />
-								<button>Edit Activity</button><br />
-								<button>Delete Activity</button>
-
+								{ showAddActivity ? <button className="showButton" onClick={() => setShowAddActivity(false)}>Hide</button> : 
+								<button className="showButton" onClick={() => setShowAddActivity(true)}>Add Activity</button>}
+								<br />
+								{ !showAddActivity ? null : 
+								<div className="activityAddForm">
+									<NewRoutineActivity userToken={userToken} id={id} />
+									<br />
+								</div>
+								}
 								</div>
 						})
 					}
