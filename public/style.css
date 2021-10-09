@@ -34,6 +34,9 @@ button, .navLink {
 	border-radius: 5px;
 	text-decoration:none;
 }
+button:hover, .navLink:hover {
+	background-color:red;
+}
 button:active, .navLink:active {
 	border-width: 2px;
 }
@@ -54,10 +57,12 @@ header {
 	justify-content: space-between;
 	background-color:white;
 	border-bottom:3px solid red;
+	border-top:3px solid red;
 	padding: 0 10px;
+	margin-top:15px;
 }
 .headerImage {
-	height:160px;
+	height:142px;
 
 }
 .headerRight {

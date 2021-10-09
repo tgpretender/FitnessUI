@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -20,7 +20,7 @@ const App = () => {
     const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
     const [passwordString, setPasswordString] = useState('');
 	const [showLog, setShowLog] = useState(true);
-    const [ allActivities, setAllActivities ] = useState([]);
+    const [allActivities, setAllActivities] = useState([]);
 
 	return <Router>
 		<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUserToken={setUserToken} setUsernameString={setUsernameString} />
@@ -29,8 +29,11 @@ const App = () => {
 					<Route exact path="/">
 						<div className="logReg">
 							<div className="greeting">
-								<h1>Welcome to Fitness Trackr
-									{ !isAuthenticated ? '!' : `, ${usernameString}!` }</h1>
+								<h1>Welcome 
+									{ !isAuthenticated ? ' ' : ' back ' }
+									to Fitness Trackr
+									{ !isAuthenticated ? '!' : `, ${usernameString}!` }
+								</h1>
 								<h2>Get swoll like Tracker the Fitness Cat</h2>
 								<ul>
 									<li>See routines from other members on the Routines tab</li>
