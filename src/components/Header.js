@@ -20,15 +20,17 @@ const Header = (props) => {
     } 
 
     return <header>
-        <h1>Fitness Trackr</h1>
+        <img src={process.env.PUBLIC_URL + 'images/TrackerTheFitnessCat.jpg'} className="headerImage" alt="Tracker the Fitness Cat says Move Your Toes!" title="Tracker the Fitness Cat says Move Your Toes!"/>
+        <div className="headerRight">
+        <h1 className="title">FiTNESS TRAC.Kr</h1>
             <nav>
                 <Link className="navLink" exact to="/">Home</Link>
                 <Link className="navLink" exact to="/routines">Routines</Link>
                 <Link className="navLink" exact to="/activities">Activities</Link>
                 { !isAuthenticated ? null : <Link className="navLink" exact to="/myroutines">My Routines</Link>}
                 { !isAuthenticated ? null : <button onClick={() => logoutUser()}>Log Out</button>}
-
             </nav>
+        </div>
         </header>
 }
 
