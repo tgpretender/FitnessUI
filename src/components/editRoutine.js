@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { editRoutine } from './'
 
 const EditRoutine = (props) => {
-	const { baseURL, userToken, id } = props;
+	const { userToken, id } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newGoal, setNewGoal ] = useState('');
 	const [ newPublic, setNewPublic ] = useState(false);

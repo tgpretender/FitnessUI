@@ -12,7 +12,6 @@ async function editRoutine(id, userToken, name, goal, isPublic) {
 		bodyParts["goal"] = goal;
 	}
 	bodyParts["isPublic"] = isPublic;
-	console.log("bodyParts: ", bodyParts);
 	const response = await fetch(`${baseURL}/routines/${id}`, {
 		method: "PATCH",
 		headers: {
@@ -24,15 +23,11 @@ async function editRoutine(id, userToken, name, goal, isPublic) {
 		)
 	})
 		.then(res => res.json())
-		.then(res => console.log(res))
-		// .then((result) => { 
-		// 	console.log(result);
-		// 	// if(result.ok === true){
-		// 	//     return location.reload()
-		// 	// } else {
-		// 	//     alert("You do not have permission to edit this routine!");
-		// 	// }
-		// })
+		.then((result) => { 
+			console.log(result);
+			return location.reload();
+
+		})
 		.catch(err => console.error(err));
 		return response;
 }

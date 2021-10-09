@@ -12,7 +12,7 @@ const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
-	const [ showEdit, setShowEdit] = useState(true)
+	const [ showEdit, setShowEdit] = useState(false)
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
@@ -67,7 +67,7 @@ const MyRoutines = (props) => {
 								{ !showEdit  ? null : 
 								<div className="routineEditForm">
 									<br />
-									<EditRoutine baseURL={baseURL} userToken={userToken} id={id}/>
+									<EditRoutine userToken={userToken} id={id}/>
 								</div>}<br />
 								<button onClick={() => deleteRoutine({id}, userToken)}>Delete Routine</button>
 								<br /><br />
