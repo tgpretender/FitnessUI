@@ -18,7 +18,6 @@ const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedIn"));
 	const [userToken, setUserToken] = useState(localStorage.getItem("token"));
     const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
-    const [passwordString, setPasswordString] = useState('');
 	const [showLog, setShowLog] = useState(true);
     const [allActivities, setAllActivities] = useState([]);
 
@@ -45,11 +44,12 @@ const App = () => {
 							<div id="logReg">
 								{ showLog ?
 								<div>
-									<Login 
-										usernameString={usernameString}
-										setUsernameString={setUsernameString}
-										passwordString={passwordString}
-										setPasswordString={setPasswordString}
+									<Login
+										baseURL={baseURL} 
+										usernameString={usernameString} 
+										setUsernameString={setUsernameString} 
+										setIsAuthenticated={setIsAuthenticated} 
+										setUserToken={setUserToken}
 									/>
 									<br />
 									<p>Not a member?</p>
@@ -65,8 +65,6 @@ const App = () => {
 										setUserToken={setUserToken}
 										usernameString={usernameString}
 										setUsernameString={setUsernameString}
-										passwordString={passwordString}
-										setPasswordString={setPasswordString}
 									/>
 									<br />
 									<p>Already a member?</p>
@@ -86,8 +84,6 @@ const App = () => {
 							setUserToken={setUserToken}
 							usernameString={usernameString}
 							setUsernameString={setUsernameString}
-							passwordString={passwordString}
-							setPasswordString={setPasswordString}
 						/>
 					</Route>
 				
@@ -95,8 +91,6 @@ const App = () => {
 						<Login 
 							usernameString={usernameString}
 							setUsernameString={setUsernameString}
-							passwordString={passwordString}
-							setPasswordString={setPasswordString}
 						/>
 					</Route>
 					<Route path="/routines">

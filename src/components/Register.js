@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const Register = ({ setUserToken }) => {
+const Register = (props) => {
+    const { setUserToken} = props;
     const [usernameString, setUsernameString] = useState('');
     const [passwordString, setPasswordString] = useState('');
 	const [isAuthenticated, setIsAuthenticated] = useState(false);

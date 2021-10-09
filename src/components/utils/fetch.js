@@ -56,8 +56,6 @@ const fetchLoggedInUserRoutines = (usernameString, userToken) => {
 	return userRoutines;
 }
 
-
-//for Routines stretch goal to get a clicked user's public routines
 const fetchSelectedUserRoutines = (username) => {
 	const [ userRoutines, setUserRoutines] = useState([]);
 	useEffect(() => {
