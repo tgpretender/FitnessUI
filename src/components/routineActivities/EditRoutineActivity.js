@@ -11,7 +11,7 @@ const EditRoutineActivity = (props) => {
 		editRoutineActivity(userToken, routineActivityId, newCount, newDuration);
 	}
 
-	return <div className="editRoutineActivityForm">
+	return <div className="form">
 		<br />
 		<h3>Edit the routine activity</h3><br />
 		<form onSubmit={sendEditRoutineActivity}>

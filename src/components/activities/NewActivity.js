@@ -12,7 +12,6 @@ async function sendActivity() {
     }
 
     try {
-
         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
             method: "POST",
             headers: {
@@ -48,28 +47,27 @@ async function send(e) {
             console.error(error)
     }
 }
-
-
-	return <div className="newActivityForm">
+	return <div className="form">
+        <h2>Create a New Activity</h2>
 			<form onSubmit={send}>
 				<label>Name: </label><br />
-				<input className="newActivityName"
+				<input className="newInputLine"
                 type="text"
 				name="name" 
                 value={newName}
                 onChange={(event) => {
                     setNewName(event.target.value)
             }}></input>
-				<br />
+				<br /><br />
 				<label>Description: </label><br />
-				<input className="newDescription"
+				<input className="newInputLine"
                 type="text"
 				name="description" 
                 value={newDescription}
                 onChange={(event) => {
                     setNewDescription(event.target.value)
             }}></input>
-				<br />
+				<br /><br />
 			<button type= "submit">Submit</button>
 			</form>
 		</div>

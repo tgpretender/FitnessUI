@@ -17,7 +17,7 @@ const NewRoutineActivity = (props) => {
 	}
 	
 
-	return <div>
+	return <div className="form">
 		<br />
 		<h3>Add a new Routine Activity</h3>
 		<br />

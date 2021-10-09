@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -18,9 +18,8 @@ const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isLoggedIn"));
 	const [userToken, setUserToken] = useState(localStorage.getItem("token"));
     const [usernameString, setUsernameString] = useState(localStorage.getItem("username"));
-    const [passwordString, setPasswordString] = useState('');
 	const [showLog, setShowLog] = useState(true);
-    const [ allActivities, setAllActivities ] = useState([]);
+    const [allActivities, setAllActivities] = useState([]);
 
 	return <Router>
 		<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUserToken={setUserToken} setUsernameString={setUsernameString} />
@@ -28,15 +27,28 @@ const App = () => {
 				<Switch>
 					<Route exact path="/">
 						<div className="logReg">
-							{ isAuthenticated ? `Welcome to Fitness Trackr, ${usernameString}!` : 
+							<div className="greeting">
+								<h1>Welcome 
+									{ !isAuthenticated ? ' ' : ' back ' }
+									to FiTNESS TRAC.Kr
+									{ !isAuthenticated ? '!' : `, ${usernameString}!` }
+								</h1>
+								<h2>Get swoll like Tracker the Fitness Cat</h2>
+								<ul>
+									<li>See routines from other members on the Routines tab</li>
+									<li>See a wide range of member submitted activities on the Activity tab</li>
+									{ !isAuthenticated ? null : <li>Manage your routines in the My Routines tab</li> }
+								</ul>
+							</div> : 
+							{ isAuthenticated ? null :
 							<div id="logReg">
 								{ showLog ?
 								<div>
-									<Login 
-										usernameString={usernameString}
-										setUsernameString={setUsernameString}
-										passwordString={passwordString}
-										setPasswordString={setPasswordString}
+									<Login
+										baseURL={baseURL} 
+										setUsernameString={setUsernameString} 
+										setIsAuthenticated={setIsAuthenticated} 
+										setUserToken={setUserToken}
 									/>
 									<br />
 									<p>Not a member?</p>
@@ -46,14 +58,10 @@ const App = () => {
 									:
 									<div>
 									<Register 
-										isAuthenticated={isAuthenticated}
-										setIsAuthenticated={setIsAuthenticated}
-										userToken={userToken}
+										baseURL={baseURL} 
+										setUsernameString={setUsernameString} 
+										setIsAuthenticated={setIsAuthenticated} 
 										setUserToken={setUserToken}
-										usernameString={usernameString}
-										setUsernameString={setUsernameString}
-										passwordString={passwordString}
-										setPasswordString={setPasswordString}
 									/>
 									<br />
 									<p>Already a member?</p>
@@ -64,27 +72,6 @@ const App = () => {
 							</div>
 							}
 						</div>
-					</Route>
-					<Route path="/register">
-						<Register 
-							isAuthenticated={isAuthenticated}
-							setIsAuthenticated={setIsAuthenticated}
-							userToken={userToken}
-							setUserToken={setUserToken}
-							usernameString={usernameString}
-							setUsernameString={setUsernameString}
-							passwordString={passwordString}
-							setPasswordString={setPasswordString}
-						/>
-					</Route>
-				
-					<Route path="/login">
-						<Login 
-							usernameString={usernameString}
-							setUsernameString={setUsernameString}
-							passwordString={passwordString}
-							setPasswordString={setPasswordString}
-						/>
 					</Route>
 					<Route path="/routines">
 						<Routines baseURL={baseURL} userToken={userToken}/>
@@ -97,6 +84,10 @@ const App = () => {
 					</Route>
 					<Route path="/userroutines/:creatorName">
 						<UserRoutines />
+					</Route>
+					<Route>
+						<h1>404 Page Not Found</h1>
+						<p>You have stumbled upon a page that doesn't exist! Tracker must have pummeled it out of existence, that fiesty cat.</p>
 					</Route>
 				</Switch>
 			</main>

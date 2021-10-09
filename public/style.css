@@ -8,87 +8,166 @@ body {
 	width:100%;
     font-family: Arial, Helvetica, sans-serif;
     font-size:14px;
+	background-color:orange;
 }
-h1 {
+a {
+	color:red;
+}
+a:hover {
+	color:orange;
+}
+ul {
+	margin-left:20px;
+	list-style-type: square;
+}
+h1, h2, h3 {
+	font-family: 'Eczar', serif;
+}
+h1, h2 {
 	margin-bottom: 10px;
 }
 button, .navLink {
 	background-color:white;
 	margin: 0 5px;
 	padding:5px;
-	border:1px solid gray;
+	color:black;
 	border-radius: 5px;
 	text-decoration:none;
 }
-button:active, .navLink:active {
-	border-width: 2px;
+button {
+	background-color:red;
+	color:white;
+	border:1px solid black;
+}
+button:hover {
+	background-color:orange;
+	color:red;
+}
+.navLink {
+	background-color: orange;
+	border:1px solid red;
+}
+.navLink:hover {
+	background-color:red;
+	color:orange;
 }
 #app {
 	display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 1fr 10%;
+    grid-template-rows: 163px 1fr 20px;
     overflow: hidden;
     overflow-wrap: break-word;
 	height: 100%;
 	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
 }
 header {
 	grid-row:1;
-	background-color:cornflowerblue;
-	text-align:center;
+	display:flex;
+	justify-content: space-between;
+	background-color:white;
+	border-bottom:3px solid red;
+	border-top:3px solid red;
+	padding: 0 10px;
+	margin-top:15px;
 }
+.headerImage {
+	height:142px;
 
+}
+.headerRight {
+	width:100%;
+	height:100%;
+	text-align:right;
+}
+.title {
+	width:100%;
+	height:70%;
+	font-size:65px;
+}
 main {
 	grid-row:2;
 	padding:10px;
 	overflow-y:auto;
+	background-color:white;
 }
 section {
 	margin:10px 0;
 }
-#logReg {
-	border: 1px solid black;
+#logReg, .form {
+	border: 1px solid red;
+	border-radius:5px;
+	background-color:orange;
 	padding:10px;
-}
-.routineList {
-	margin-top:10px;
-}
-.routine, .activity, .profileRoutine {
-	border:1px solid black;
-	margin:10px 0;
-	padding:10px
-}
-.routineListActivity {
-	margin-left:20px;
-	margin-top:10px;
+	max-width:500px;
+	margin: 0 auto;
 }
 label {
 	font-weight:bold;
 	margin-bottom:5px;
 }
 #selectedActivities, .newInputLine {
-	width: 90%;
+	width:100%;
 	max-width: 500px;
 	padding:3px;
+	border:1px solid red;
+}
+.routineList {
+	margin-top:10px;
+}
+.routine, .activity, .profileRoutine {
+	border:1px solid red;
+	border-radius:5px;
+	margin:10px 0;
+}
+.routineHeader {
+	background-color:orange;
+	padding: 0 10px;
+	display:flex;
+	justify-content: space-between;
+}
+.routineHeader a {
+	text-decoration:none;
+}
+.routineHeader a:hover {
+	color:black;
+}
+.routineInner, .routineListActivityInner {
+	padding:10px
+}
+.routineListActivity {
+	border: 1px solid orange;
+	border-radius:5px;
+	margin-top:10px;
+}
+.routineListActivityHeader {
+	background-color:red;
+	color:white;
+	padding: 5px 10px;
+	font-weight:bold;
 }
 .profileDivs {
 	margin:10px 0;
 }
 .publicRoutine, .privateRoutine {
-	padding:5px;
-	width:60px;
-	text-align: center;
+	border-radius:5px;
+	width:80px;
+	text-align:center;
+	font-weight:bold;
 }
 .publicRoutine {
-	background-color:green;
+	color:green;
+	border:1px solid green;
 }
 .privateRoutine {
-	background-color:red;
+	color:red;
+	border:1px solid red;
 }
 footer {
 	grid-row:3;
-	background-color:cornflowerblue;
 	text-align:center;
+	border-top:3px solid red;
 }
 
 .usernameValue {

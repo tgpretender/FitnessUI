@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-const Register = ({ setUserToken }) => {
-    const [usernameString, setUsernameString] = useState('');
-    const [passwordString, setPasswordString] = useState('');
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
+const Register = (props) => {
+    const {baseURL, setUsernameString, setIsAuthenticated, setUserToken} = props;
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
 
-    async function registerUser(username, password, event) {
+    async function registerUser() {
         event.preventDefault();
 
         if (password.length < 8) {
              alert("Password Must Be At Least 8 Characters")
         }else{
      
-        const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/users/register', {
+        const response = await fetch(`${baseURL}users/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -23,58 +23,51 @@ const Register = ({ setUserToken }) => {
                 'password': password
             }),
         })
-                .then(response => response.json())
-                .then(result => {
-                    if (result) {
-                        const token = result.token
-                        console.log(result)
-                        setIsAuthenticated(true)
-                        setUserToken(token)
-                        localStorage.setItem("token", token)
-                        localStorage.setItem('isLoggedIn', true)
-                        localStorage.setItem('username', username)
-                        location.reload();
-                    }
-    
-                    return result
-                })
-                .catch(console.error)
+        .then(response => response.json())
+        .then(result => {
+            if(result.token){
+                setIsAuthenticated(true)
+                setUserToken(result.token)
+                setUsernameString(username)
+                localStorage.setItem('token', result.token)
+                localStorage.setItem('isLoggedIn', true)
+                localStorage.setItem('username', username)
+                location.reload();
+                return result
+                } else if(!result.token){
+                    alert("Invalid username/password combination")
+            }
+        })
+        .catch(console.error)
         }
     };
 
     return (
-        <>
-            <div className='Register'>
-
-                <h1>Register</h1>
-
-                <input className="usernameValue"
+        <div className='logRegForm'>
+            <h2>Register</h2>
+            <form onSubmit={registerUser}>
+                <label>Username: </label><br />
+                <input className="newInputLine"
                     type="username"
-                    value={usernameString}
+                    value={username}
                     onChange={(event) => {
-                        setUsernameString(event.target.value)
+                        setUsername(event.target.value)
                     }}>
                 </input>
-
-                <input className="passwordValue"
+                <br /><br />
+                <label>Password: </label><br />
+                <input className="newInputLine"
                     type="password"
-                    value={passwordString}
+                    value={password}
                     onChange={(event) => {
-                        setPasswordString(event.target.value);
+                        setPassword(event.target.value);
                     }}>
                 </input>
-
-                <button className="registerbtn" onClick={
-                    () => {
-                        registerUser(usernameString, passwordString)
-
-                    }}
-                >Register</button>
-
-            </div>
-        </>
+                <br /><br />
+                <button type="submit">Submit</button> 
+            </form>
+        </div>
     )
-   
 }
 
 export default Register;

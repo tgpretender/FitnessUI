@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { logUserIn } from './';
 
-const Login = ( ) => {
+const Login = (props) => {
+    const {baseURL, setUsernameString, setIsAuthenticated, setUserToken} = props;
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const [usernameString, setUsernameString] = useState('');
-    const [passwordString, setPasswordString] = useState('');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [userToken, setUserToken] = useState('')
-
-    function loginUser(username, password) {
-
-        fetch('http://fitnesstrac-kr.herokuapp.com/api/users/login', {
+    async function loginUser() {
+        event.preventDefault();
+        
+        const response = await fetch(`${baseURL}users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,6 +23,7 @@ const Login = ( ) => {
                 if(result.token){
                 setIsAuthenticated(true)
                 setUserToken(result.token)
+                setUsernameString(username)
                 localStorage.setItem('token', result.token)
                 localStorage.setItem('isLoggedIn', true)
                 localStorage.setItem('username', username)
@@ -34,38 +35,33 @@ const Login = ( ) => {
                 }
             })
             .catch(console.error)
-
     };
+
     return (
-        <>
-            <div className='Login'>
-                <h1>Login</h1>
-
-                <input className="usernameValue"
+        <div className='logRegForm'>
+            <h2>Login</h2>
+            <form onSubmit={loginUser}>
+                <label>Username: </label><br />
+                <input className="newInputLine"
                     type="username"
-                    value={usernameString}
+                    value={username}
                     onChange={function (event) {
-                        setUsernameString(event.target.value);
+                        setUsername(event.target.value);
                     }}>
                 </input>
-
-                <input className="passwordValue"
+                <br /><br />
+                <label>Password: </label><br />
+                <input className="newInputLine"
                     type="password"
-                    value={passwordString}
+                    value={password}
                     onChange={function (event) {
-                        setPasswordString(event.target.value);
+                        setPassword(event.target.value);
                     }}>
                 </input>
-
-
-                <button className="loginBtn" onClick={() => {
-                    loginUser(usernameString, passwordString)
-                }
-                }
-                >Login</button> 
-
-            </div>
-        </>
+                <br /><br />
+                <button type="submit">Submit</button> 
+            </form>
+        </div>
     )
 }
 
