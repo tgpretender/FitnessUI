@@ -29,7 +29,6 @@ h1, h2 {
 button, .navLink {
 	background-color:white;
 	margin: 0 5px;
-	padding:5px;
 	color:black;
 	border-radius: 5px;
 	text-decoration:none;
@@ -38,6 +37,7 @@ button {
 	background-color:red;
 	color:white;
 	border:1px solid black;
+	padding: 5px 9px;
 }
 button:hover {
 	background-color:orange;
@@ -46,6 +46,7 @@ button:hover {
 .navLink {
 	background-color: orange;
 	border:1px solid red;
+	padding:5px;
 }
 .navLink:hover {
 	background-color:red;

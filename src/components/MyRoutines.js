@@ -18,6 +18,7 @@ const MyRoutines = (props) => {
 	const [ showEditRoutine, setShowEditRoutine] = useState(false);
 	const [ showAddRoutineActivity, setShowAddRoutineActivity] = useState(false);
 	const [ showEditRoutineActivity, setShowEditRoutineActivity] = useState(false);
+	const [ activeKey, setActiveKey] = useState('');
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
@@ -63,18 +64,25 @@ const MyRoutines = (props) => {
 								<br />
 								<label>Goal: </label>{goal}
 								<br /><br />
-								{ showEditRoutine ? <button className="navLink" onClick={() => setShowEditRoutine(false)}>Hide</button> : 
+								{ showEditRoutine ? <button className="navLink" onClick={() => {
+									setShowEditRoutine(false)}}>Hide</button> : 
 								<button className="navLink" onClick={() => {
-									setShowEditRoutine(true);
+									setActiveKey(id);
+
 									setShowRoutineForm(false);
 									setShowActivityForm(false);
 									setShowAddRoutineActivity(false);
 									setShowEditRoutineActivity(false);
+
+									const key = document.getElementById("editRoutine" + id);
+									console.log(key);
+									
+									setShowEditRoutine(true);
 								}}>Edit Routine</button>}
 								{ !showEditRoutine  ? null : 
 									<div>
 										<br />
-										<EditRoutine userToken={userToken} id={id}/>
+										<EditRoutine userToken={userToken} id={id} data-key={"editRoutine" + id}/>
 										<br />
 									</div>
 								} 

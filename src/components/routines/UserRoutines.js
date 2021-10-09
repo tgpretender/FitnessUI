@@ -12,18 +12,26 @@ const UserRoutines = () => {
 			routines.map((routine) => {
 				const { id: routineId, name: routineName, goal, activities} = routine;
 				return <div key={routineId} className="routine">
-					Name: {routineName}<br />
-					Goal: {goal}<br />
-					Activities: { !activities.length > 0 ? 'None' : 
+					<div className="routineHeader">
+						<h3>{routineName}</h3>
+					</div>
+					<div className="routineInner">
+					<label>Goal: </label>{goal}<br />
+					<label>Activities: </label>{ !activities.length > 0 ? 'None' : 
                             activities.map((activity, index) =>{
                                 const {id: activityId, name: activityName, description, duration, count} = activity;
                                 return <div className="routineListActivity" key={activityId}>
-                                Name: {activityName} <br />
-                                Description: {description} <br />
-                                Duration: {duration} <br />
-                                Count: {count}
-                            </div>;
+									<div className="routineListActivityHeader">
+										{activityName}
+									</div>
+									<div className="routineListActivityInner">
+                                		<label>Description: </label>{description} <br />
+                                		<label>Duration: </label>{duration} <br />
+                                		<label>Count: </label>{count}
+									</div>
+                            	</div>;
                         })}
+					</div>
 				</div>
 			})
 		}
