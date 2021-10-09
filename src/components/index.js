@@ -4,7 +4,6 @@ export { default as Register } from './Register';
 export { default as Login } from './Login';
 export { default as MyRoutines } from './MyRoutines';
 export { default as Activities } from './Activities';
-export { default as NewActivity } from './NewActivity';
 
 export { 
 	fetchRoutines, 
@@ -18,6 +17,8 @@ export {
 	editRoutineActivity,
 	deleteRoutineActivity
 } from './utils/index';
+
+export { NewActivity } from './activities/index';
 
 export {
 	Routines,
