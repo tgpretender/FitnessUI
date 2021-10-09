@@ -3,18 +3,25 @@ import {useEffect, useState} from 'react';
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 
 async function editRoutine(id, userToken, name, goal, isPublic) {
+	const bodyParts = {}
 
+	if(name){
+		bodyParts["name"] = name;
+	}
+	if(goal){
+		bodyParts["goal"] = goal;
+	}
+	bodyParts["isPublic"] = isPublic;
+	console.log("bodyParts: ", bodyParts);
 	const response = await fetch(`${baseURL}/routines/${id}`, {
 		method: "PATCH",
 		headers: {
 			'Content-Type': 'application/json',
 			'Authorization': `Bearer ${userToken}`
 		  },
-		body: JSON.stringify({
-			name: name,
-			goal: goal,
-			isPublic: isPublic
-		})
+		body: JSON.stringify(
+			bodyParts
+		)
 	})
 		.then(res => res.json())
 		.then(res => console.log(res))
