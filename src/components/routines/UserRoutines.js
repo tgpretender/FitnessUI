@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchSelectedUserRoutines} from './';
+import { fetchSelectedUserRoutines} from '../';
 
 const UserRoutines = () => {
 	const { creatorName} = useParams();

@@ -5,7 +5,6 @@ export { default as Login } from './Login';
 export { default as MyRoutines } from './MyRoutines';
 export { default as Activities } from './Activities';
 export { default as NewActivity } from './NewActivity';
-export { default as UserRoutines } from './UserRoutines';
 
 export { 
 	fetchRoutines, 
@@ -23,7 +22,8 @@ export {
 export {
 	Routines,
 	NewRoutine,
-	EditRoutine
+	EditRoutine,
+	UserRoutines
 } from './routines/index';
 
 export {
