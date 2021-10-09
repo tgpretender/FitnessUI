@@ -28,7 +28,17 @@ const App = () => {
 				<Switch>
 					<Route exact path="/">
 						<div className="logReg">
-							{ isAuthenticated ? `Welcome to Fitness Trackr, ${usernameString}!` : 
+							<div className="greeting">
+								<h1>Welcome to Fitness Trackr
+									{ !isAuthenticated ? '!' : `, ${usernameString}!` }</h1>
+								<h2>Get swoll like Tracker the Fitness Cat</h2>
+								<ul>
+									<li>See routines from other members on the Routines tab</li>
+									<li>See a wide range of member submitted activities on the Activity tab</li>
+									{ !isAuthenticated ? null : <li>Manage your routines in the My Routines tab</li> }
+								</ul>
+							</div> : 
+							{ isAuthenticated ? null :
 							<div id="logReg">
 								{ showLog ?
 								<div>
