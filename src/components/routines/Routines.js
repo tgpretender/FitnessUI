@@ -21,10 +21,8 @@ const Routines = (props) => {
                             <h3><Link to={ `/userroutines/${creatorName}`} >{creatorName}</Link></h3>
                         </div>
                         <div className="routineInner">
-                            <label>Goal: </label>{goal}<br />
-                            <label>Creator: </label>
-                            <Link to={ `/userroutines/${creatorName}`} >{creatorName}</Link>
-                            <br />
+                            <label>Goal: </label>{goal}
+                            <br /><br />
                             <label>Activities:</label> { !activities.length > 0 ? 'None' : 
                                 activities.map((activity, index) =>{
                                     const {id: activityId, name: activityName, description, duration, count} = activity;
