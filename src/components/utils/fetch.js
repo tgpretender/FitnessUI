@@ -75,6 +75,9 @@ const fetchSelectedUserRoutines = (username) => {
 	return userRoutines;
 }
 
+//fetch all routine activity that matches that activityId
+//
+
 export {
 	fetchRoutines,
 	fetchActivities,

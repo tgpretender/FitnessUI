@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchSelectedActivityRoutines} from '../';
+//import { fetchSelectedActivityRoutines} from '../';
 
 const ActivityRoutines = () => {
-	const { creatorName} = useParams();
+//	const { activityId } = useParams();
 	const routines = fetchSelectedActivityRoutines(creatorName);
 
 	return <div>

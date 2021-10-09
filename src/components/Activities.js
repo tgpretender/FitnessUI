@@ -6,25 +6,6 @@ const Activities = (props) => {
 	//let people search for routines that include a specific activitiy?
 	const { userToken, allActivities, setAllActivities } = props;
     const activities = fetchActivities();
-    
-/////////////
-	const fetchAllPublicRoutines = () => {
-		const [ publicRoutinesToActivity, setPublicRoutinesToActivity ] = useState([]);
-		useEffect(() => {
-			fetch(`${baseURL}/routines`, {
-				method: 'GET',
-				headers: {'Content-Type': 'application/json'}
-			})
-			.then(res => res.json())
-			.then((res) => {
-				const response = res;
-				setPublicRoutinesToActivity(response);
-			})
-			.catch(err => console.error(err))
-	}, []);
-		return publicRoutinesToActivity;
-	}
-///////////////
 
     return <div className="activities">
             <h1>Activities</h1>
@@ -40,7 +21,7 @@ const Activities = (props) => {
 						return <div key={id} className="activity">
 							Name: {name}<br />
 							Description: {description}
-							<button className="actRoutineBtn">Routines</button>
+							
 						</div>
 					})
 				}
