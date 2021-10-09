@@ -58,10 +58,10 @@ const fetchLoggedInUserRoutines = (usernameString, userToken) => {
 
 
 //for Routines stretch goal to get a clicked user's public routines
-const fetchUserRoutines = (username) => {
+const fetchSelectedUserRoutines = (username) => {
 	const [ userRoutines, setUserRoutines] = useState([]);
 	useEffect(() => {
-        fetch(`${baseURL}/users/${usernameString}/routines`, {
+        fetch(`${baseURL}/users/${username}/routines`, {
             method: 'GET',
             headers: {
 				'Content-Type': 'application/json'
@@ -80,6 +80,6 @@ const fetchUserRoutines = (username) => {
 export {
 	fetchRoutines,
 	fetchActivities,
-	fetchUserRoutines,
+	fetchSelectedUserRoutines,
 	fetchLoggedInUserRoutines
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { NewRoutine, fetchRoutines } from '../';
 
 const Routines = (props) => {
@@ -22,7 +23,9 @@ const Routines = (props) => {
                     return <div key={routineId} className="routine">
                         Name: {routineName}<br />
                         Goal: {goal}<br />
-                        Creator: {creatorName}<br />
+                        Creator: 
+                        <Link to={ `/userroutines/${creatorName}`} >{creatorName}</Link>
+                        <br />
                         Activities: { !activities.length > 0 ? 'None' : 
                             activities.map((activity, index) =>{
                                 const {id: activityId, name: activityName, description, duration, count} = activity;

@@ -5,10 +5,13 @@ export { default as Login } from './Login';
 export { default as MyRoutines } from './MyRoutines';
 export { default as Activities } from './Activities';
 export { default as NewActivity } from './NewActivity';
+export { default as UserRoutines } from './UserRoutines';
 
-export { fetchRoutines, 
+export { 
+	fetchRoutines, 
 	fetchActivities, 
-	fetchLoggedInUserRoutines, 
+	fetchLoggedInUserRoutines,
+	fetchSelectedUserRoutines,
 	addRoutine,
 	editRoutine, 
 	deleteRoutine,
