@@ -38,26 +38,26 @@ const Login = ( ) => {
 
     };
     return (
-        <>
-            <div className='Login'>
-                <h1>Login</h1>
-
-                <input className="usernameValue"
+            <div className='logRegForm'>
+                <h2>Login</h2>
+                <label>Username: </label><br />
+                <input className="newInputLine"
                     type="username"
                     value={usernameString}
                     onChange={function (event) {
                         setUsernameString(event.target.value);
                     }}>
                 </input>
-
-                <input className="passwordValue"
+                <br /><br />
+                <label>Password: </label><br />
+                <input className="newInputLine"
                     type="password"
                     value={passwordString}
                     onChange={function (event) {
                         setPasswordString(event.target.value);
                     }}>
                 </input>
-
+                <br /><br />
 
                 <button className="loginBtn" onClick={() => {
                     loginUser(usernameString, passwordString)
@@ -66,7 +66,6 @@ const Login = ( ) => {
                 >Login</button> 
 
             </div>
-        </>
     )
 }
 

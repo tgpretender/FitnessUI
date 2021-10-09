@@ -44,26 +44,26 @@ const Register = ({ setUserToken }) => {
 
     return (
         <>
-            <div className='Register'>
-
-                <h1>Register</h1>
-
-                <input className="usernameValue"
+            <div className='logRegForm'>
+                <h2>Register</h2>
+                <label>Username: </label><br />
+                <input className="newInputLine"
                     type="username"
                     value={usernameString}
                     onChange={(event) => {
                         setUsernameString(event.target.value)
                     }}>
                 </input>
-
-                <input className="passwordValue"
+                <br /><br />
+                <label>Password: </label><br />
+                <input className="newInputLine"
                     type="password"
                     value={passwordString}
                     onChange={(event) => {
                         setPasswordString(event.target.value);
                     }}>
                 </input>
-
+                <br /><br />
                 <button className="registerbtn" onClick={
                     () => {
                         registerUser(usernameString, passwordString)

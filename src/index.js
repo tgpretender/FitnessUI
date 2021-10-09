@@ -31,7 +31,7 @@ const App = () => {
 							<div className="greeting">
 								<h1>Welcome 
 									{ !isAuthenticated ? ' ' : ' back ' }
-									to Fitness Trackr
+									to FiTNESS TRAC.Kr
 									{ !isAuthenticated ? '!' : `, ${usernameString}!` }
 								</h1>
 								<h2>Get swoll like Tracker the Fitness Cat</h2>
