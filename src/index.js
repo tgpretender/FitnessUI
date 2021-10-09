@@ -85,6 +85,10 @@ const App = () => {
 					<Route path="/userroutines/:creatorName">
 						<UserRoutines />
 					</Route>
+					<Route>
+						<h1>404 Page Not Found</h1>
+						<p>You have stumbled upon a page that doesn't exist! Tracker must have pummeled it out of existence, that fiesty cat.</p>
+					</Route>
 				</Switch>
 			</main>
 		<Footer />
