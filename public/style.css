@@ -36,6 +36,7 @@ button, .navLink {
 }
 button {
 	background-color:red;
+	color:white;
 	border:1px solid black;
 }
 button:hover {
@@ -48,6 +49,7 @@ button:hover {
 }
 .navLink:hover {
 	background-color:red;
+	color:orange;
 }
 #app {
 	display: grid;
@@ -149,15 +151,14 @@ label {
 	margin:10px 0;
 }
 .publicRoutine, .privateRoutine {
-	padding:5px;
-	width:60px;
-	text-align: center;
+	text-align:center;
+	font-weight:bold;
 }
 .publicRoutine {
-	background-color:green;
+	color:green;
 }
 .privateRoutine {
-	background-color:red;
+	color:red;
 }
 footer {
 	grid-row:3;

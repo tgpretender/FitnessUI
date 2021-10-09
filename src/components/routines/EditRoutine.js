@@ -11,7 +11,7 @@ const EditRoutine = (props) => {
 		editRoutine(id, userToken, newName, newGoal, newPublic);
 	}
 
-	return <div className="editRoutineForm">
+	return <div className="form">
 		<h3>Edit Routine</h3>
 		<br />
 		<form onSubmit={sendEdit}>
