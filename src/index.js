@@ -46,7 +46,6 @@ const App = () => {
 								<div>
 									<Login
 										baseURL={baseURL} 
-										usernameString={usernameString} 
 										setUsernameString={setUsernameString} 
 										setIsAuthenticated={setIsAuthenticated} 
 										setUserToken={setUserToken}
@@ -59,12 +58,10 @@ const App = () => {
 									:
 									<div>
 									<Register 
-										isAuthenticated={isAuthenticated}
-										setIsAuthenticated={setIsAuthenticated}
-										userToken={userToken}
+										baseURL={baseURL} 
+										setUsernameString={setUsernameString} 
+										setIsAuthenticated={setIsAuthenticated} 
 										setUserToken={setUserToken}
-										usernameString={usernameString}
-										setUsernameString={setUsernameString}
 									/>
 									<br />
 									<p>Already a member?</p>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { logUserIn } from './';
 
 const Login = (props) => {
-    const {baseURL, usernameString, setUsernameString, setIsAuthenticated, setUserToken} = props;
+    const {baseURL, setUsernameString, setIsAuthenticated, setUserToken} = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -37,8 +37,9 @@ const Login = (props) => {
             .catch(console.error)
     };
 
-    return (<div className='logRegForm'>
-        <h2>Login</h2>
+    return (
+        <div className='logRegForm'>
+            <h2>Login</h2>
             <form onSubmit={loginUser}>
                 <label>Username: </label><br />
                 <input className="newInputLine"
@@ -58,8 +59,7 @@ const Login = (props) => {
                     }}>
                 </input>
                 <br /><br />
-
-                <button id="loginButton" type="submit">Submit</button> 
+                <button type="submit">Submit</button> 
             </form>
         </div>
     )
