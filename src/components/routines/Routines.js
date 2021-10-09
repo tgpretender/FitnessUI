@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewRoutine, fetchRoutines } from './';
+import { NewRoutine, fetchRoutines } from '../';
 
 const Routines = (props) => {
     //have some kind of pagination? (check art collector)

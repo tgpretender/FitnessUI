@@ -12,25 +12,9 @@ const MyRoutines = (props) => {
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
-	const [ showEdit, setShowEdit] = useState(true)
+	const [ showEdit, setShowEdit] = useState(false)
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
-
-	
-	const addActivity = () => {
-		//add activity without replacing the others
-		//set count and duration
-		//STRETCH: only show activities not currently on the routine
-	}
-	const editActivity = () => {
-		//edit the duration or count of an activity
-		//patch request
-	}
-	const deleteActivity = () => {
-		//delete activity from the routine
-	}
-
-
 
     return <div>
         	<h1>{usernameString}'s Routines</h1>
@@ -67,7 +51,7 @@ const MyRoutines = (props) => {
 								{ !showEdit  ? null : 
 								<div className="routineEditForm">
 									<br />
-									<EditRoutine baseURL={baseURL} userToken={userToken} id={id}/>
+									<EditRoutine userToken={userToken} id={id}/>
 								</div>}<br />
 								<button onClick={() => deleteRoutine({id}, userToken)}>Delete Routine</button>
 								<br /><br />
