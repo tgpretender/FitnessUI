@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { editRoutine } from './'
+import { editRoutine } from '.'
 
 const EditRoutine = (props) => {
 	const { userToken, id } = props;

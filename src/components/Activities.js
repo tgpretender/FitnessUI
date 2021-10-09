@@ -3,13 +3,13 @@ import { NewActivity, fetchActivities} from './';
 
 const Activities = (props) => {
 	//let people search for routines that include a specific activitiy?
-	const { userToken } = props;
+	const { userToken, allActivities, setAllActivities } = props;
     const activities = fetchActivities();
     
     return <div className="activities">
             <h1>Activities</h1>
             <div>
-                {!userToken ? null : <NewActivity userToken={userToken} /> }
+                {!userToken ? null : <NewActivity userToken={userToken} allActivities={allActivities} setAllActivities={setAllActivities}/> }
             </div>
             <br />
             <p>These are all of the activities.</p>

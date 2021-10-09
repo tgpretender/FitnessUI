@@ -1,15 +1,15 @@
 import {useState} from 'react';
 
 const NewActivity = (props) => {
-	const { userToken } = props;
+	const { userToken, allActivities, setAllActivities } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription] = useState('');
 
 async function sendActivity() {
 	console.log('sendActivity is running')
     const activityObj = {
-        "name": newName,
-        "description": newDescription
+        name: newName,
+        description: newDescription
     }
     try {
         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
@@ -22,9 +22,9 @@ async function sendActivity() {
                 activityObj
             )
         })
+		
         const data = await response.json();
-		console.log(data)
-
+        console.log(data)
         return data
     } catch (error) {
 		console.log('sendActivity is not running')
@@ -32,8 +32,22 @@ async function sendActivity() {
     }
 }
 
+async function send(e) {
+    e.preventDefault();
+        try {
+            const results = await sendActivity();
+            if(results.id) {
+                setAllActivities([...allActivities]);
+                location.reload();
+            }
+        } catch(error) {
+            console.error(error)
+    }
+}
+
+
 	return <div className="newActivityForm">
-			<form onSubmit={sendActivity}>
+			<form onSubmit={send}>
 				<label>Name: </label><br />
 				<input className="newActivityName"
                 type="text"
