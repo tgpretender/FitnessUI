@@ -8,5 +8,11 @@ export { default as Activities } from './Activities';
 export { default as NewActivity } from './NewActivity';
 export { default as NewRoutine } from './NewRoutine';
 export { default as EditRoutine } from './EditRoutine';
-export { fetchRoutines, fetchActivities, fetchLoggedInUserRoutines } from './fetchUtils';
-export { editRoutine, deleteRoutine } from './routineUtils';
+
+
+export { fetchRoutines, 
+	fetchActivities, 
+	fetchLoggedInUserRoutines, 
+	editRoutine, 
+	deleteRoutine 
+} from './utils/index';
