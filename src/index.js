@@ -73,23 +73,6 @@ const App = () => {
 							}
 						</div>
 					</Route>
-					<Route path="/register">
-						<Register 
-							isAuthenticated={isAuthenticated}
-							setIsAuthenticated={setIsAuthenticated}
-							userToken={userToken}
-							setUserToken={setUserToken}
-							usernameString={usernameString}
-							setUsernameString={setUsernameString}
-						/>
-					</Route>
-				
-					<Route path="/login">
-						<Login 
-							usernameString={usernameString}
-							setUsernameString={setUsernameString}
-						/>
-					</Route>
 					<Route path="/routines">
 						<Routines baseURL={baseURL} userToken={userToken}/>
 					</Route>

@@ -20,21 +20,33 @@ ul {
 	margin-left:20px;
 	list-style-type: square;
 }
+h1, h2, h3 {
+	font-family: 'Eczar', serif;
+}
 h1, h2 {
 	margin-bottom: 10px;
-	font-family: 'Eczar', serif;
 }
 button, .navLink {
 	background-color:white;
 	margin: 0 5px;
 	padding:5px;
-	border:1px solid red;
-	background-color:orange;
 	color:black;
 	border-radius: 5px;
 	text-decoration:none;
 }
-button:hover, .navLink:hover {
+button {
+	background-color:red;
+	border:1px solid black;
+}
+button:hover {
+	background-color:orange;
+	color:red;
+}
+.navLink {
+	background-color: orange;
+	border:1px solid red;
+}
+.navLink:hover {
 	background-color:red;
 }
 #app {
@@ -81,8 +93,10 @@ main {
 section {
 	margin:10px 0;
 }
-#logReg {
+#logReg, .form {
 	border: 1px solid red;
+	border-radius:5px;
+	background-color:orange;
 	padding:10px;
 	max-width:500px;
 	margin: 0 auto;
@@ -101,13 +115,35 @@ label {
 	margin-top:10px;
 }
 .routine, .activity, .profileRoutine {
-	border:1px solid black;
+	border:1px solid red;
+	border-radius:5px;
 	margin:10px 0;
+}
+.routineHeader {
+	background-color:orange;
+	padding: 0 10px;
+	display:flex;
+	justify-content: space-between;
+}
+.routineHeader a {
+	text-decoration:none;
+}
+.routineHeader a:hover {
+	color:black;
+}
+.routineInner, .routineListActivityInner {
 	padding:10px
 }
 .routineListActivity {
-	margin-left:20px;
+	border: 1px solid orange;
+	border-radius:5px;
 	margin-top:10px;
+}
+.routineListActivityHeader {
+	background-color:red;
+	color:white;
+	padding: 5px 10px;
+	font-weight:bold;
 }
 .profileDivs {
 	margin:10px 0;

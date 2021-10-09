@@ -12,7 +12,7 @@ const NewRoutine = (props) => {
 		addRoutine(userToken, newName, newGoal, newPublic);
 	}
 
-	return <div className="newRoutineForm">
+	return <div className="form">
 		<h2>Create a New Routine</h2>
 		<form onSubmit={sendRoutine}>
 			<label>Name: </label><br />
@@ -31,7 +31,7 @@ const NewRoutine = (props) => {
                     setNewGoal(event.target.value)
             }}></input>
 			<br /><br />
-			<label>Keep Public? </label>
+			<label>Allow your routine to be public? </label>
 			<input type="checkbox" 
 				id="publicCheckbox"
 				value="false" 
