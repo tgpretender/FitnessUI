@@ -34,7 +34,6 @@ const Login = ( ) => {
                 }
             })
             .catch(console.error)
-        //}
 
     };
     return (

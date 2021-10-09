@@ -9,7 +9,8 @@ import {
 	Register,
 	Login,
 	MyRoutines,
-	Activities
+	Activities,
+	UserRoutines
 } from './components';
 
 const App = () => {
@@ -93,6 +94,9 @@ const App = () => {
 					</Route>
 					<Route path="/activities">
 						<Activities userToken={userToken} allActivities={allActivities} setAllActivities={setAllActivities}/>
+					</Route>
+					<Route path="/userroutines/:creatorName">
+						<UserRoutines />
 					</Route>
 				</Switch>
 			</main>

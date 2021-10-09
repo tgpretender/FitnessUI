@@ -6,7 +6,9 @@ import {
 	fetchLoggedInUserRoutines,
 	deleteRoutine,
 	EditRoutine,
-	NewRoutineActivity
+	NewRoutineActivity,
+	EditRoutineActivity,
+	deleteRoutineActivity
 } from './';
 
 const MyRoutines = (props) => {
@@ -14,13 +16,14 @@ const MyRoutines = (props) => {
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
 	const [ showEditRoutine, setShowEditRoutine] = useState(false);
-	const [ showAddActivity, setShowAddActivity] = useState(false);
+	const [ showAddRoutineActivity, setShowAddRoutineActivity] = useState(false);
+	const [ showEditRoutineActivity, setShowEditRoutineActivity] = useState(false);
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
     return <div>
         	<h1>{usernameString}'s Routines</h1>
-			<p>Here are your routines. You can edit, delete, and create new routines from here.</p>
+			<p>Here are your routines. You can create, edit, and delete them.</p>
 			<section className="profileSection">
 				<div className="profileDivs">
 					{ showRoutineForm ? <button className="showButton" onClick={() => setShowRoutineForm(false)}>Hide</button> : 
@@ -70,8 +73,14 @@ const MyRoutines = (props) => {
 													Count: {count}<br />
 													Duration: {duration}
 													<br /><br />
-													<button>Edit Activity</button><br />
-													<button>Delete Activity</button>
+													
+													{ showEditRoutineActivity ? <button className="showButton" onClick={() => setShowEditRoutineActivity(false)}>Hide</button> : 
+													<button className="showButton" onClick={() => setShowEditRoutineActivity(true)}>Edit Activity</button>}
+													{ !showEditRoutineActivity ? null : 
+														<EditRoutineActivity userToken={userToken} routineActivityId={routineActivityId} />
+													}
+													<br />
+													<button onClick={() => deleteRoutineActivity({routineActivityId}, userToken)}>Delete Activity</button>
 													<br /><br />
 												</div>
 											})
@@ -79,10 +88,10 @@ const MyRoutines = (props) => {
 									</div>
 								}
 								<br /><br />
-								{ showAddActivity ? <button className="showButton" onClick={() => setShowAddActivity(false)}>Hide</button> : 
-								<button className="showButton" onClick={() => setShowAddActivity(true)}>Add Activity</button>}
+								{ showAddRoutineActivity ? <button className="showButton" onClick={() => setShowAddRoutineActivity(false)}>Hide</button> : 
+								<button className="showButton" onClick={() => setShowAddRoutineActivity(true)}>Add Activity</button>}
 								<br />
-								{ !showAddActivity ? null : 
+								{ !showAddRoutineActivity ? null : 
 								<div className="activityAddForm">
 									<NewRoutineActivity userToken={userToken} id={id} />
 									<br />

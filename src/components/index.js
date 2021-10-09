@@ -6,21 +6,27 @@ export { default as MyRoutines } from './MyRoutines';
 export { default as Activities } from './Activities';
 export { default as NewActivity } from './NewActivity';
 
-export { fetchRoutines, 
+export { 
+	fetchRoutines, 
 	fetchActivities, 
-	fetchLoggedInUserRoutines, 
+	fetchLoggedInUserRoutines,
+	fetchSelectedUserRoutines,
 	addRoutine,
 	editRoutine, 
 	deleteRoutine,
-	addRoutineActivity
+	addRoutineActivity,
+	editRoutineActivity,
+	deleteRoutineActivity
 } from './utils/index';
 
 export {
 	Routines,
 	NewRoutine,
-	EditRoutine
+	EditRoutine,
+	UserRoutines
 } from './routines/index';
 
 export {
-	NewRoutineActivity
+	NewRoutineActivity,
+	EditRoutineActivity
 } from './routineActivities/index';

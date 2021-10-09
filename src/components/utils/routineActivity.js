@@ -26,17 +26,55 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 	})
 		.catch(console.error);
 }
-/*
-const editRoutineActivity = () => {
+
+async function editRoutineActivity(userToken, activityId, count, duration) {
+	console.log("userToken: ", userToken)
+	console.log("activityId: ", activityId);
+	console.log("count: ", count);
+	console.log("duration: ", duration);
+
+	const response = await fetch(`${baseURL}routine_activities/${activityId}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${userToken}`
+		},
+		body: JSON.stringify({
+			count: count,
+			duration: duration
+		})
+	}).then(res => res.json())
+	.then((result) => { 
+		return location.reload();
+	})
+		.catch(err => console.err(err));
 
 }
 
-const deleteRoutineActivity = () => {
+async function deleteRoutineActivity(id, userToken) {
+	const ID = id.routineActivityId;
 
+	const response = await fetch(`${baseURL}routine_activities/${ID}`, {
+		method: "DELETE",
+		headers: {
+		  'Content-Type': 'application/json',
+		  'Authorization': `Bearer ${userToken}`
+		}
+	})
+		.then(res => res.json())
+		.then((result) => { 
+			console.log(result);
+			if(result.success === true){
+				return location.reload()
+			} else {
+				alert("You do not have permission to delete this routine activity!");
+			}
+		})
+		.catch(err => console.error(err));
 }
-*/
+
 export { 
 	addRoutineActivity,
-//	editRoutineActivity,
-//	deleteRoutineActivity
+	editRoutineActivity,
+	deleteRoutineActivity
 };
