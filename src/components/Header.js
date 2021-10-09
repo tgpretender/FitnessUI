@@ -3,13 +3,6 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
     const { isAuthenticated, setIsAuthenticated, setUserToken, setUsernameString} = props;
-	//goal: have MyRoutines only show as an option if the user is logged in
-    //supply it the userId to get their routines
-
-    //have switch between stuff available to logged in users vs not logged in
-    //Logged in:
-    //  My Routines
-    //  User profile page?
 
     function logoutUser() {
         setIsAuthenticated(false)
@@ -20,7 +13,7 @@ const Header = (props) => {
     } 
 
     return <header>
-        <img src={process.env.PUBLIC_URL + 'images/TrackerTheFitnessCat.jpg'} className="headerImage" alt="Tracker the Fitness Cat says Move Your Toes!" title="Tracker the Fitness Cat says Move Your Toes!"/>
+        <img src={process.env.PUBLIC_URL + 'images/TrackerTheFitnessCat.jpg'} className="headerImage" alt="Tracker the Fitness Cat says Move Your Tush!" title="Tracker the Fitness Cat says Move Your Tush!"/>
         <div className="headerRight">
         <h1 className="title">FiTNESS TRAC.Kr</h1>
             <nav>
