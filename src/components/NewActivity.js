@@ -11,7 +11,9 @@ async function sendActivity() {
         name: newName,
         description: newDescription
     }
+
     try {
+
         const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/activities', {
             method: "POST",
             headers: {
@@ -24,10 +26,13 @@ async function sendActivity() {
         })
 		
         const data = await response.json();
-        console.log(data)
-        return data
+        if (data.error){
+            alert("That Activity Already Exists")
+            throw 'Activity Exists Error'
+        } else {
+            return data
+        }
     } catch (error) {
-		console.log('sendActivity is not running')
         console.error(error);
     }
 }
@@ -72,3 +77,4 @@ async function send(e) {
 }
 
 export default NewActivity;
+

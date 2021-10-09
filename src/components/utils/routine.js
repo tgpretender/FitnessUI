@@ -27,7 +27,16 @@ async function addRoutine(userToken, name, goal, isPublic) {
 }
 
 async function editRoutine(id, userToken, name, goal, isPublic) {
+<<<<<<< HEAD:src/components/routineUtils.js
+	const ID = id.id;
+	const routineObj = {
+		'name': name,
+		'goal': goal,
+		'isPublic': isPublic
+	}
+=======
 	const bodyParts = {}
+>>>>>>> 94a29b0ca2222a6a7d8e83e24ce8fea14c6e62f0:src/components/utils/routine.js
 
 	if(name){
 		bodyParts["name"] = name;
@@ -42,9 +51,15 @@ async function editRoutine(id, userToken, name, goal, isPublic) {
 			'Content-Type': 'application/json',
 			'Authorization': `Bearer ${userToken}`
 		  },
+<<<<<<< HEAD:src/components/routineUtils.js
+		body: JSON.stringify({
+			routineObj
+		})
+=======
 		body: JSON.stringify(
 			bodyParts
 		)
+>>>>>>> 94a29b0ca2222a6a7d8e83e24ce8fea14c6e62f0:src/components/utils/routine.js
 	})
 		.then(res => res.json())
 		.then((result) => { 
