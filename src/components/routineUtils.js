@@ -4,6 +4,11 @@ const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 
 async function editRoutine(id, userToken, name, goal, isPublic) {
 	const ID = id.id;
+	const routineObj = {
+		'name': name,
+		'goal': goal,
+		'isPublic': isPublic
+	}
 
 	const response = await fetch(`${baseURL}/routines/${ID}`, {
 		method: "PATCH",
@@ -11,11 +16,9 @@ async function editRoutine(id, userToken, name, goal, isPublic) {
 			'Content-Type': 'application/json',
 			'Authorization': `Bearer ${userToken}`
 		  },
-		body: {
-			name: name,
-			goal: goal,
-			isPublic: isPublic
-		}
+		body: JSON.stringify({
+			routineObj
+		})
 	})
 		.then(res => res.json())
 		.then((result) => { 
