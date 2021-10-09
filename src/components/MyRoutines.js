@@ -58,8 +58,9 @@ const MyRoutines = (props) => {
 								</div>
 								<div className="routineInner">
 								{
-									isPublic ? <div className="publicRoutine">Status: Public</div> : <div className="privateRoutine">Status: Private</div>
+									isPublic ? <div className="publicRoutine">Public</div> : <div className="privateRoutine">Private</div>
 								}
+								<br />
 								<label>Goal: </label>{goal}
 								<br /><br />
 								{ showEditRoutine ? <button className="navLink" onClick={() => setShowEditRoutine(false)}>Hide</button> : 

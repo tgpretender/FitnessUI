@@ -28,7 +28,7 @@ const Header = (props) => {
                 <Link className="navLink" exact to="/routines">Routines</Link>
                 <Link className="navLink" exact to="/activities">Activities</Link>
                 { !isAuthenticated ? null : <Link className="navLink" exact to="/myroutines">My Routines</Link>}
-                { !isAuthenticated ? null : <button onClick={() => logoutUser()}>Log Out</button>}
+                { !isAuthenticated ? null : <Link exact to="/"><button onClick={() => logoutUser()}>Log Out</button></Link>}
             </nav>
         </div>
         </header>

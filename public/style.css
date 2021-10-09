@@ -151,14 +151,18 @@ label {
 	margin:10px 0;
 }
 .publicRoutine, .privateRoutine {
+	border-radius:5px;
+	width:80px;
 	text-align:center;
 	font-weight:bold;
 }
 .publicRoutine {
 	color:green;
+	border:1px solid green;
 }
 .privateRoutine {
 	color:red;
+	border:1px solid red;
 }
 footer {
 	grid-row:3;
