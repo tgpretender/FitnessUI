@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { editRoutine } from '.'
+import {useState} from 'react';
+import { addRoutine } from '../';
 
-const EditRoutine = (props) => {
-	const { userToken, id } = props;
+const NewRoutine = (props) => {
+	const { userToken } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newGoal, setNewGoal ] = useState('');
 	const [ newPublic, setNewPublic ] = useState(false);
 
-	const sendEdit = () => {
-		editRoutine(id, userToken, newName, newGoal, newPublic);
+	const sendRoutine = () => {
+		event.preventDefault();
+		addRoutine(userToken, newName, newGoal, newPublic);
 	}
 
-	return <div className="editRoutineForm">
-		<h3>Edit Routine</h3>
-		<br />
-		<form onSubmit={sendEdit}>
-			<label>New Name: </label><br />
+	return <div className="newRoutineForm">
+		<h2>Create a New Routine</h2>
+		<form onSubmit={sendRoutine}>
+			<label>Name: </label><br />
 			<input className="newInputLine"
                 type="text"
                 value={newName}
@@ -23,7 +23,7 @@ const EditRoutine = (props) => {
                     setNewName(event.target.value)
             }}></input>
 			<br /><br />
-			<label>New Goal: </label><br />
+			<label>Goal: </label><br />
 			<input className="newInputLine"
                 type="text"
                 value={newGoal}
@@ -31,7 +31,7 @@ const EditRoutine = (props) => {
                     setNewGoal(event.target.value)
             }}></input>
 			<br /><br />
-			<label>Make Public? </label>
+			<label>Keep Public? </label>
 			<input type="checkbox" 
 				id="publicCheckbox"
 				value="false" 
@@ -49,4 +49,4 @@ const EditRoutine = (props) => {
 	</div>
 }
 
-export default EditRoutine;
+export default NewRoutine;

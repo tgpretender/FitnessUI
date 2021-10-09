@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React from 'react';
 
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 
