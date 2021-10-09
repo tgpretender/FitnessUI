@@ -51,9 +51,26 @@ async function editRoutineActivity(userToken, activityId, count, duration) {
 
 }
 
-const deleteRoutineActivity = () => {
-	console.log("delete invoked");
+async function deleteRoutineActivity(id, userToken) {
+	const ID = id.routineActivityId;
 
+	const response = await fetch(`${baseURL}routine_activities/${ID}`, {
+		method: "DELETE",
+		headers: {
+		  'Content-Type': 'application/json',
+		  'Authorization': `Bearer ${userToken}`
+		}
+	})
+		.then(res => res.json())
+		.then((result) => { 
+			console.log(result);
+			if(result.success === true){
+				return location.reload()
+			} else {
+				alert("You do not have permission to delete this routine activity!");
+			}
+		})
+		.catch(err => console.error(err));
 }
 
 export { 

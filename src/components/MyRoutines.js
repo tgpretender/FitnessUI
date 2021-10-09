@@ -7,7 +7,8 @@ import {
 	deleteRoutine,
 	EditRoutine,
 	NewRoutineActivity,
-	EditRoutineActivity
+	EditRoutineActivity,
+	deleteRoutineActivity
 } from './';
 
 const MyRoutines = (props) => {
@@ -79,7 +80,7 @@ const MyRoutines = (props) => {
 														<EditRoutineActivity userToken={userToken} routineActivityId={routineActivityId} />
 													}
 													<br />
-													<button>Delete Activity</button>
+													<button onClick={() => deleteRoutineActivity({routineActivityId}, userToken)}>Delete Activity</button>
 													<br /><br />
 												</div>
 											})
