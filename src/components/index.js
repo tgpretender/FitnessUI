@@ -20,3 +20,7 @@ export {
 	NewRoutine,
 	EditRoutine
 } from './routines/index';
+
+export {
+	NewRoutineActivity
+} from './routineActivities/index';
