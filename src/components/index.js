@@ -12,7 +12,9 @@ export { fetchRoutines,
 	addRoutine,
 	editRoutine, 
 	deleteRoutine,
-	addRoutineActivity
+	addRoutineActivity,
+	editRoutineActivity,
+	deleteRoutineActivity
 } from './utils/index';
 
 export {
@@ -22,5 +24,6 @@ export {
 } from './routines/index';
 
 export {
-	NewRoutineActivity
+	NewRoutineActivity,
+	EditRoutineActivity
 } from './routineActivities/index';

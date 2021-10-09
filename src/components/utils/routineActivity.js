@@ -27,11 +27,32 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 		.catch(console.error);
 }
 
-const editRoutineActivity = () => {
+async function editRoutineActivity(userToken, activityId, count, duration) {
+	console.log("userToken: ", userToken)
+	console.log("activityId: ", activityId);
+	console.log("count: ", count);
+	console.log("duration: ", duration);
+
+	const response = await fetch(`${baseURL}routine_activities/${activityId}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${userToken}`
+		},
+		body: JSON.stringify({
+			count: count,
+			duration: duration
+		})
+	}).then(res => res.json())
+	.then((result) => { 
+		return location.reload();
+	})
+		.catch(err => console.err(err));
 
 }
 
 const deleteRoutineActivity = () => {
+	console.log("delete invoked");
 
 }
 
