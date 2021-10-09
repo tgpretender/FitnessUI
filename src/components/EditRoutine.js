@@ -8,7 +8,6 @@ const EditRoutine = (props) => {
 	const [ newPublic, setNewPublic ] = useState(false);
 
 	const sendEdit = () => {
-		event.preventDefault();
 		editRoutine(id, userToken, newName, newGoal, newPublic);
 	}
 

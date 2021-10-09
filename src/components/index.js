@@ -13,6 +13,7 @@ export { default as EditRoutine } from './EditRoutine';
 export { fetchRoutines, 
 	fetchActivities, 
 	fetchLoggedInUserRoutines, 
+	addRoutine,
 	editRoutine, 
 	deleteRoutine 
 } from './utils/index';

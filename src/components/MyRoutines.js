@@ -16,22 +16,6 @@ const MyRoutines = (props) => {
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
 
-	
-	const addActivity = () => {
-		//add activity without replacing the others
-		//set count and duration
-		//STRETCH: only show activities not currently on the routine
-	}
-	const editActivity = () => {
-		//edit the duration or count of an activity
-		//patch request
-	}
-	const deleteActivity = () => {
-		//delete activity from the routine
-	}
-
-
-
     return <div>
         	<h1>{usernameString}'s Routines</h1>
 			<p>Here are your routines. You can edit, delete, and create new routines from here.</p>

@@ -2,6 +2,30 @@ import {useEffect, useState} from 'react';
 
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api/';
 
+async function addRoutine(userToken, name, goal, isPublic) {
+	const response = await fetch(`${baseURL}/routines`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${userToken}`
+		},
+		body: JSON.stringify({
+			name: name,
+			goal: goal,
+			isPublic: isPublic,
+		})
+	})
+	.then((response) => {
+		console.log("response: ",response);
+		if(response.ok) {
+			return location.reload();
+		} else {
+			alert("Something went wrong. Please try again.")
+		}
+	})
+		.catch(console.error);
+}
+
 async function editRoutine(id, userToken, name, goal, isPublic) {
 	const bodyParts = {}
 
@@ -24,9 +48,7 @@ async function editRoutine(id, userToken, name, goal, isPublic) {
 	})
 		.then(res => res.json())
 		.then((result) => { 
-			console.log(result);
 			return location.reload();
-
 		})
 		.catch(err => console.error(err));
 		return response;
@@ -54,6 +76,7 @@ async function deleteRoutine(id, userToken) {
 }
 
 export {
+	addRoutine,
 	editRoutine,
 	deleteRoutine
 };

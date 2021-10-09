@@ -1,2 +1,3 @@
 export { fetchRoutines, fetchActivities, fetchLoggedInUserRoutines } from './fetch';
-export { editRoutine, deleteRoutine } from './routine';
+export { addRoutine, editRoutine, deleteRoutine } from './routine';
+export { addActivity, editActivity, deleteActivity} from './activity'
