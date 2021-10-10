@@ -11,6 +11,7 @@ import {
 	deleteRoutineActivity
 } from './';
 const routineMap = new Map();
+const routineActivityMap = new Map();
 
 const MyRoutines = (props) => {
 	console.log('my routines ran again')
@@ -20,9 +21,12 @@ const MyRoutines = (props) => {
 	const [ showEditRoutine, setShowEditRoutine] = useState(false);
 	const [ showAddRoutineActivity, setShowAddRoutineActivity] = useState(false);
 	const [ showEditRoutineActivity, setShowEditRoutineActivity] = useState(false);
-	const [ activeKey, setActiveKey] = useState('');
+	const [ sendEditRoutine, setSendEditRoutine ] = useState([]);
+
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
+
+
 
     return <div>
         	<h1>{usernameString}'s Routines</h1>
@@ -56,10 +60,11 @@ const MyRoutines = (props) => {
 						routines.map((routine) => {
 							const { id, isPublic, name, goal, activities} = routine;
 							if(!routineMap.has(id)){
-							routineMap.set(id, false);
-							console.log('this is my routineMap', routineMap)
-
-
+								routineMap.set(id, false);
+							}
+							
+							if(!routineActivityMap.has(id)){
+								routineActivityMap.set(id, false);
 							}
 							return <div key={id} className="routine">
 								<div className="routineHeader">
@@ -74,17 +79,14 @@ const MyRoutines = (props) => {
 								<br /><br />
 								{ routineMap.get(id) ? <button className="navLink" onClick={() => {
 									setShowEditRoutine(!showEditRoutine)
-									//setShowEditRoutine(true)
 									routineMap.set(id, false);
-									//location.reload();
 
 									console.log('hide routines', routineMap);
 
 								}
 								}>Hide</button> : 
+								
 								<button className="navLink" onClick={() => {
-									setActiveKey(id);
-
 									setShowRoutineForm(false);
 									setShowActivityForm(false);
 									setShowAddRoutineActivity(false);
@@ -95,8 +97,6 @@ const MyRoutines = (props) => {
 									
 									setShowEditRoutine(!showEditRoutine)
 									routineMap.set(id, true);
-
-									console.log('edit routines', routineMap);
 								}}>Edit Routine</button>}
 								{ !routineMap.get(id)  ? null : 
 									<div>
@@ -105,15 +105,19 @@ const MyRoutines = (props) => {
 										<br />
 									</div>
 								} 
-								{ showAddRoutineActivity ? <button className="navLink" onClick={() => setShowAddRoutineActivity(false)}>Hide</button> : 
+								{ routineActivityMap.get(id) ? <button className="navLink" onClick={() => {
+									setShowAddRoutineActivity(!showAddRoutineActivity);
+									routineActivityMap.set(id, false);
+								}}>Hide</button> : 
 								<button className="navLink" onClick={() => {
-									setShowAddRoutineActivity(true);
+									setShowAddRoutineActivity(!showAddRoutineActivity);
 									setShowRoutineForm(false);
 									setShowActivityForm(false);
 									setShowEditRoutine(false);
 									setShowEditRoutineActivity(false);
+									routineActivityMap.set(id, true)
 								}}>Add Activity</button>}
-								{ !showAddRoutineActivity ? null : 
+								{ !routineActivityMap.get(id) ? null : 
 								<div className="activityAddForm">
 									<br />
 									<NewRoutineActivity userToken={userToken} id={id} />
