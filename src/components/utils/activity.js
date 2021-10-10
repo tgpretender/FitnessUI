@@ -27,10 +27,6 @@ async function addActivity(userToken, name, description){
 }
 
 async function editActivity(userToken, id, name, description){
-	console.log("id: ", id);
-	console.log("name: ", name);
-	console.log("description: ", description);
-
 	const bodyParts = {}
 
 	if(name){
@@ -50,14 +46,17 @@ async function editActivity(userToken, id, name, description){
 		)
 	})
 		.then(res => res.json())
-		.then(res => console.log(res))
+		.then(res => {
+			if(res.error) {
+				alert("You must be logged in to update activities")
+				throw 'Authentication Error'
+			} else {
+				return location.reload()
+			}
+		})
 		.catch(err => console.error(err))
 
 	return response;
-}
-
-async function deleteActivity(activityId){
-	//might not need????
 }
 
 export {

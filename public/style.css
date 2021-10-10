@@ -96,6 +96,9 @@ main {
 section {
 	margin:10px 0;
 }
+.disclaimer {
+	margin-top:80%;
+}
 #logReg, .form {
 	border: 1px solid red;
 	border-radius:5px;

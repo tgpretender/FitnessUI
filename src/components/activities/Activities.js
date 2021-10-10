@@ -5,18 +5,19 @@ import { NewActivity, EditActivity, fetchActivities} from '../';
 const ActivityMap = new Map();
 
 const Activities = (props) => {
-	const { baseURL, userToken } = props;
+	const { baseURL, userToken, isAuthenticated } = props;
 	const [ showEditForm, setShowEditForm] = useState(true);
 
-
-
     const activities = fetchActivities();
+	activities.reverse();
 
     return <div className="activities">
             <h1>Activities</h1>
             <div>
                 {!userToken ? null : <NewActivity userToken={userToken} /> }
             </div>
+			<br />
+			<p>Click the name of any activity to see routines that include it.</p>
             <br />
 			<div className="activitiesList">
 				{
@@ -25,14 +26,16 @@ const Activities = (props) => {
 						if(!ActivityMap.has(id)){
 							ActivityMap.set(id, false);
 						}
-						//console.log(ActivityMap);
 						return <div key={id} className="activity">
-							<div className="routineListActivityHeader">{name}</div>
+							<div className="routineListActivityHeader">
+								<Link to={`/activityroutines/${id}`}>{name}</Link>
+							</div>
 							<div className="routineListActivityInner">
 								<label>Description:</label> {description}
 								<br /><br />
-								<Link to={ `/activityroutines/${id}`} className="navLink" >Routines</Link>
-								{ !ActivityMap.get(id) ? <button className="navLink" onClick={() => {
+								{ !isAuthenticated ? null : 
+									<div>
+										{ !ActivityMap.get(id) ? <button className="navLink" onClick={() => {
 									setShowEditForm(!showEditForm)
 									ActivityMap.set(id, true)
 									
@@ -41,8 +44,11 @@ const Activities = (props) => {
 									setShowEditForm(!showEditForm);
 									ActivityMap.set(id, false)
 								}}>Hide</button>}
-								<br /><br />
+									<br /><br />
+									</div>
+								}
 								{ !ActivityMap.get(id) ? null : <EditActivity baseURL={baseURL}userToken={userToken} id={id} /> }
+								
 							</div>
 						</div>
 					})

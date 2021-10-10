@@ -19,12 +19,17 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 	.then((response) => {
 		console.log("response: ",response);
 		if(!response.ok) {
-			alert("Something went wrong. Please try again.")
+			alert("This activity is already included in your routine.");
+			throw 'Duplication Error'
 		} else {
 			return location.reload();
 		}
 	})
 		.catch(console.error);
+}
+
+async function checkActivityDuplicate(routineId, activityId) {
+	
 }
 
 async function editRoutineActivity(userToken, activityId, count, duration) {

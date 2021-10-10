@@ -10,6 +10,10 @@ const Routines = (props) => {
         <h1>Routines</h1>
         {!userToken ? null : <NewRoutine userToken={userToken} /> }
         <br />
+        <br />
+        <p>Click the username of any user to see a list of ther publically available routines.</p>
+        <br />
+        <p>Click the name of any activity to see routines that include it.</p>
         <div className="routineList">
             {
                 routines.map((routine,index) => {

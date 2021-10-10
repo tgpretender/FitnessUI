@@ -9,7 +9,7 @@ const ActivityRoutines = () => {
 	return <div className="routines">
 		<h1>Routines with This Activity</h1>
 			{
-				routines === 0 ? "There are no routines containing this activity" : 
+				routines === 0 ? "There are no routines containing this activity." : 
 				<div className="routineList">
 					{
                 routines.map((routine,index) => {

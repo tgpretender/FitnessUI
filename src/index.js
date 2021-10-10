@@ -40,7 +40,10 @@ const App = () => {
 									<li>See a wide range of member submitted activities on the Activity tab</li>
 									{ !isAuthenticated ? null : <li>Manage your routines in the My Routines tab</li> }
 								</ul>
-							</div> : 
+								<div className="disclaimer">
+									<label>DISCLAIMER:</label> FiTNESS TRAC.Kr is not liable for injuries sustained while performing member submitted routines or activities. Do not run from a bear. Use bear spray.
+								</div>
+							</div>
 							{ isAuthenticated ? null :
 							<div id="logReg">
 								{ showLog ?
@@ -81,7 +84,7 @@ const App = () => {
 						<MyRoutines baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} userToken={userToken} />
+						<Activities baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated} />
 					</Route>
 					<Route path="/userroutines/:creatorName">
 						<UserRoutines />
