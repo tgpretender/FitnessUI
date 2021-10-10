@@ -12,6 +12,8 @@ import {
 } from './';
 const routineMap = new Map();
 const routineActivityMap = new Map();
+const editActivityMap = new Map();
+
 
 const MyRoutines = (props) => {
 	console.log('my routines ran again')
@@ -142,16 +144,19 @@ const MyRoutines = (props) => {
 													<label>Duration: </label>{duration}
 													<br /><br />
 													
-													{ showEditRoutineActivity ? <button className="navLink" onClick={() =>
-														setShowEditRoutineActivity(false)}>Hide</button> : 
+													{ editActivityMap.get(id) ? <button className="navLink" onClick={() =>{
+														setShowEditRoutineActivity(!showEditRoutineActivity);
+														editActivityMap.set(id, false)
+													}}>Hide</button> : 
 													<button className="navLink" onClick={() => {
-														setShowEditRoutineActivity(true);
+														setShowEditRoutineActivity(!showEditRoutineActivity);
 														setShowRoutineForm(false);
 														setShowActivityForm(false);
 														setShowEditRoutine(false);
 														setShowAddRoutineActivity(false);
+														editActivityMap.set(id, true)
 													}}>Edit Activity</button>}
-													{ !showEditRoutineActivity ? null : 
+													{ !editActivityMap.get(id) ? null : 
 														<div>
 															<EditRoutineActivity userToken={userToken} routineActivityId={routineActivityId} />
 															<br />
