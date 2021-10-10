@@ -97,7 +97,6 @@ const fetchSelectedUserRoutines = (username) => {
 	return userRoutines;
 }
 
-
 export {
 	fetchRoutines,
 	fetchActivities,

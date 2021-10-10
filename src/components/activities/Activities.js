@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { NewActivity, fetchActivities} from '../';
 
+
 const Activities = (props) => {
 	const { userToken, allActivities, setAllActivities } = props;
     const activities = fetchActivities();
-    
+
     return <div className="activities">
             <h1>Activities</h1>
             <div>
@@ -31,3 +32,18 @@ const Activities = (props) => {
 }
 
 export default Activities;
+
+
+/*
+			<div className="activitiesList">
+				{
+					activities.map((activity,index) => {
+						const { id, name, description } = activity;
+						return <div key={id} className="activity">
+							Name: {name}<br />
+							Description: {description}
+						</div>
+					})
+				}
+			</div>
+*/
