@@ -2,10 +2,13 @@ import {useState} from 'react';
 import { Link } from "react-router-dom";
 import { NewActivity, EditActivity, fetchActivities} from '../';
 
+const ActivityMap = new Map();
 
 const Activities = (props) => {
 	const { baseURL, userToken } = props;
 	const [ showEditForm, setShowEditForm] = useState(true);
+
+
 
     const activities = fetchActivities();
 
@@ -19,15 +22,27 @@ const Activities = (props) => {
 				{
 					activities.map((activity,index) => {
 						const { id, name, description } = activity;
+						if(!ActivityMap.has(id)){
+							ActivityMap.set(id, false);
+						}
+						//console.log(ActivityMap);
 						return <div key={id} className="activity">
 							<div className="routineListActivityHeader">{name}</div>
 							<div className="routineListActivityInner">
 								<label>Description:</label> {description}
 								<br /><br />
 								<Link to={ `/activityroutines/${id}`} className="navLink" >Routines</Link>
-								{ showEditForm ? <button className="navLink" onClick={() => setShowEditForm(false)}>Hide</button> : <button className="navLink" onClick={() => setShowEditForm(true)}>Edit Activity</button>}
+								{ !ActivityMap.get(id) ? <button className="navLink" onClick={() => {
+									setShowEditForm(!showEditForm)
+									ActivityMap.set(id, true)
+									
+								}}>Edit Activity</button> : 
+								<button className="navLink" onClick={() => {
+									setShowEditForm(!showEditForm);
+									ActivityMap.set(id, false)
+								}}>Hide</button>}
 								<br /><br />
-								{ !showEditForm ? null : <EditActivity baseURL={baseURL}userToken={userToken} id={id} /> }
+								{ !ActivityMap.get(id) ? null : <EditActivity baseURL={baseURL}userToken={userToken} id={id} /> }
 							</div>
 						</div>
 					})

@@ -68,6 +68,9 @@ const MyRoutines = (props) => {
 							if(!routineActivityMap.has(id)){
 								routineActivityMap.set(id, false);
 							}
+							if(!editActivityMap.has(id)){
+								editActivityMap.set(id, false);
+							}
 							return <div key={id} className="routine">
 								<div className="routineHeader">
 									<h3>{name}</h3>
