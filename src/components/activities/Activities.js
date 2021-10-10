@@ -1,10 +1,12 @@
-import React from 'react';
+import {useState} from 'react';
 import { Link } from "react-router-dom";
-import { NewActivity, fetchActivities} from '../';
+import { NewActivity, EditActivity, fetchActivities} from '../';
 
 
 const Activities = (props) => {
-	const { userToken, allActivities, setAllActivities } = props;
+	const { baseURL, userToken, allActivities, setAllActivities } = props;
+	const [ showEditForm, setShowEditForm] = useState(true);
+
     const activities = fetchActivities();
 
     return <div className="activities">
@@ -23,6 +25,8 @@ const Activities = (props) => {
 								<label>Description:</label> {description}
 								<br /><br />
 								<Link to={ `/activityroutines/${id}`} className="navLink" >Routines</Link>
+								{ showEditForm ? "yes" : "no"}
+								{ !showEditForm ? null : <EditActivity baseURL={baseURL} userToken={userToken} /> }
 							</div>
 						</div>
 					})

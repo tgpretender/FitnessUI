@@ -23,6 +23,7 @@ export {
 export { 
 	Activities,
 	NewActivity,
+	EditActivity,
 	ActivityRoutines
 } from './activities/index';
 
