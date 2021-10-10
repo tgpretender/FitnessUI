@@ -9,7 +9,6 @@ const Activities = (props) => {
 	const [ showEditForm, setShowEditForm] = useState(true);
 
     const activities = fetchActivities();
-	activities.reverse();
 
     return <div className="activities">
             <h1>Activities</h1>

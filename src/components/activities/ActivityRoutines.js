@@ -28,7 +28,8 @@ const ActivityRoutines = () => {
                                     const {id: activityId, name: activityName, description, duration, count} = activity;
                                     return <div className="routineListActivity" key={activityId}>
                                         <div className="routineListActivityHeader">
-                                            {activityName}
+                                        <Link to={`/activityroutines/${activityId}`}>{activityName}</Link>
+
                                         </div>
                                         <div className="routineListActivityInner">
                                         <label>Description: </label>{description} <br />
