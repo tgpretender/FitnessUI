@@ -29,7 +29,7 @@ const Activities = (props) => {
 						}
 						return <div key={id} className="activity">
 							<div className="routineListActivityHeader">
-								<Link to={`/activityroutines/${id}`}>{name}</Link> {id}
+								<Link to={`/activityroutines/${id}`}>{name}</Link>
 							</div>
 							<div className="routineListActivityInner">
 								<label>Description:</label> {description}
