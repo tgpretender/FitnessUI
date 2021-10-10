@@ -12,6 +12,8 @@ export {
 	fetchSelectedUserRoutines,
 	addRoutine,
 	editRoutine, 
+	addActivity,
+	editActivity,
 	deleteRoutine,
 	addRoutineActivity,
 	editRoutineActivity,

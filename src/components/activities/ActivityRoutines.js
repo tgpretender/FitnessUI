@@ -6,8 +6,6 @@ const ActivityRoutines = () => {
 	const { activityId } = useParams();
 	const routines = fetchRoutinesByActivity(activityId);
 
-
-
 	return <div className="routines">
 		<h1>Routines with This Activity</h1>
 			{

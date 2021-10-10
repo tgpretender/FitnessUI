@@ -5,6 +5,10 @@ export {
 	fetchLoggedInUserRoutines, 
 	fetchSelectedUserRoutines 
 } from './fetch';
+export {
+	addActivity,
+	editActivity
+} from './activity'
 export { 
 	addRoutine, 
 	editRoutine, 
