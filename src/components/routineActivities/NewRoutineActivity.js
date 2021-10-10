@@ -14,6 +14,7 @@ const NewRoutineActivity = (props) => {
 		return 0;
 	})
 
+
 	const sendRoutineActivity = () => {
 		event.preventDefault();
 		const selector = document.getElementById("selectedActivities");

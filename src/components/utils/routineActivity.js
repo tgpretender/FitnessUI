@@ -28,10 +28,6 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 		.catch(console.error);
 }
 
-async function checkActivityDuplicate(routineId, activityId) {
-	
-}
-
 async function editRoutineActivity(userToken, activityId, count, duration) {
 	console.log("userToken: ", userToken)
 	console.log("activityId: ", activityId);
