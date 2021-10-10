@@ -26,8 +26,34 @@ async function addActivity(userToken, name, description){
 		.catch(console.error);
 }
 
-async function editActivity(name, description){
+async function editActivity(userToken, id, name, description){
+	console.log("id: ", id);
+	console.log("name: ", name);
+	console.log("description: ", description);
 
+	const bodyParts = {}
+
+	if(name){
+		bodyParts["name"] = name;
+	}
+	if(description){
+		bodyParts["description"] = description;
+	}
+	const response = await fetch(`${baseURL}/activities/${id}`, {
+		method: "PATCH",
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${userToken}`
+		  },
+		body: JSON.stringify(
+			bodyParts
+		)
+	})
+		.then(res => res.json())
+		.then(res => console.log(res))
+		.catch(err => console.error(err))
+
+	return response;
 }
 
 async function deleteActivity(activityId){

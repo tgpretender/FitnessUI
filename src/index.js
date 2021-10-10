@@ -81,7 +81,7 @@ const App = () => {
 						<MyRoutines baseURL={baseURL} usernameString={usernameString} userToken={userToken}/>
 					</Route>
 					<Route path="/activities">
-						<Activities baseURL={baseURL} userToken={userToken} allActivities={allActivities} setAllActivities={setAllActivities}/>
+						<Activities baseURL={baseURL} userToken={userToken} />
 					</Route>
 					<Route path="/userroutines/:creatorName">
 						<UserRoutines />

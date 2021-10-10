@@ -1,13 +1,13 @@
 import {useState} from 'react';
-
+import { editActivity} from '../'
 const EditActivity = (props) => {
-	const { baseURL, id } = props;
+	const { userToken, id } = props;
 	const [ newName, setNewName ] = useState('');
 	const [ newDescription, setNewDescription ] = useState('');
 
 	const sendEdit = () => {
-		//editActivity(id, userToken, newName, newGoal, newPublic);
-
+		event.preventDefault();
+		editActivity(userToken, id, newName, newDescription);
 	}
 
 	return <div className="form">
