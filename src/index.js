@@ -10,7 +10,8 @@ import {
 	Login,
 	MyRoutines,
 	Activities,
-	UserRoutines
+	UserRoutines,
+	ActivityRoutines
 } from './components';
 
 const App = () => {
@@ -84,6 +85,9 @@ const App = () => {
 					</Route>
 					<Route path="/userroutines/:creatorName">
 						<UserRoutines />
+					</Route>
+					<Route path="/activityroutines/:activityId">
+						<ActivityRoutines />
 					</Route>
 					<Route>
 						<h1>404 Page Not Found</h1>

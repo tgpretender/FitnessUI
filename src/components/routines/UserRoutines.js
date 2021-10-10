@@ -26,8 +26,8 @@ const UserRoutines = () => {
 									</div>
 									<div className="routineListActivityInner">
                                 		<label>Description: </label>{description} <br />
+										<label>Count: </label>{count}<br />
                                 		<label>Duration: </label>{duration} <br />
-                                		<label>Count: </label>{count}
 									</div>
                             	</div>;
                         })}
