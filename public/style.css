@@ -148,6 +148,14 @@ label {
 	padding: 5px 10px;
 	font-weight:bold;
 }
+.routineListActivityHeader a {
+	color:white;
+	text-decoration:none;
+}
+.routineListActivityHeader a:hover {
+	color:black;
+	text-decoration:none;
+}
 .profileDivs {
 	margin:10px 0;
 }
