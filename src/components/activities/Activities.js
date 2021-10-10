@@ -25,8 +25,9 @@ const Activities = (props) => {
 								<label>Description:</label> {description}
 								<br /><br />
 								<Link to={ `/activityroutines/${id}`} className="navLink" >Routines</Link>
-								{ showEditForm ? "yes" : "no"}
-								{ !showEditForm ? null : <EditActivity baseURL={baseURL} userToken={userToken} /> }
+								{ showEditForm ? "hide" : "show"}
+								<br /><br />
+								{ !showEditForm ? null : <EditActivity baseURL={baseURL} id={id} /> }
 							</div>
 						</div>
 					})
