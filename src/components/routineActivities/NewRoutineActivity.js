@@ -7,6 +7,7 @@ const NewRoutineActivity = (props) => {
 	const [ newDuration, setNewDuration ] = useState(0);
 
 	const activities = fetchActivities();
+	
 
 	activities.sort(function(a, b){
 		if(a.name < b.name) { return -1; }

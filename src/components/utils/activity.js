@@ -17,7 +17,7 @@ async function addActivity(userToken, name, description){
 		.then(res => res.json())
 		.then(res => {
 			if (res.error){
-				alert("That Activity Already Exists")
+				alert("An activity with that name already exists!")
 				throw 'Activity Exists Error'
 			} else {
 				return location.reload()
@@ -47,9 +47,9 @@ async function editActivity(userToken, id, name, description){
 	})
 		.then(res => res.json())
 		.then(res => {
-			if(res.error) {
-				alert("You must be logged in to update activities")
-				throw 'Authentication Error'
+			if (res.error){
+				alert("An activity with that name already exists!")
+				throw 'Activity Exists Error'
 			} else {
 				return location.reload()
 			}

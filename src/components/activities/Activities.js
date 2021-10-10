@@ -8,7 +8,9 @@ const Activities = (props) => {
 	const { baseURL, userToken, isAuthenticated } = props;
 	const [ showEditForm, setShowEditForm] = useState(true);
 
-    const activities = fetchActivities();
+    const fetched = fetchActivities();
+	const sorted = fetched.sort((a, b) => a.id - b.id);
+	const activities = sorted.reverse();
 
     return <div className="activities">
             <h1>Activities</h1>
@@ -27,7 +29,7 @@ const Activities = (props) => {
 						}
 						return <div key={id} className="activity">
 							<div className="routineListActivityHeader">
-								<Link to={`/activityroutines/${id}`}>{name}</Link>
+								<Link to={`/activityroutines/${id}`}>{name}</Link> {id}
 							</div>
 							<div className="routineListActivityInner">
 								<label>Description:</label> {description}
@@ -46,7 +48,7 @@ const Activities = (props) => {
 									<br /><br />
 									</div>
 								}
-								{ !ActivityMap.get(id) ? null : <EditActivity baseURL={baseURL}userToken={userToken} id={id} /> }
+								{ !ActivityMap.get(id) ? null : <EditActivity baseURL={baseURL} userToken={userToken} id={id} /> }
 								
 							</div>
 						</div>
