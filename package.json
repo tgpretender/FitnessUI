@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=true react-scripts start"
+    "start": "CHOKIDAR_USEPOLLING=true react-scripts start",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",

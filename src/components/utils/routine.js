@@ -65,7 +65,6 @@ async function deleteRoutine(id, userToken) {
 	})
 		.then(res => res.json())
 		.then((result) => { 
-			console.log(result);
 			if(result.success === true){
 				return location.reload()
 			} else {

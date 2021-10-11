@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchSelectedUserRoutines} from '../';
 
 const UserRoutines = () => {
@@ -22,12 +22,12 @@ const UserRoutines = () => {
                                 const {id: activityId, name: activityName, description, duration, count} = activity;
                                 return <div className="routineListActivity" key={activityId}>
 									<div className="routineListActivityHeader">
-										{activityName}
+										<Link to={`/activityroutines/${activityId}`}>{activityName}</Link>
 									</div>
 									<div className="routineListActivityInner">
                                 		<label>Description: </label>{description} <br />
 										<label>Count: </label>{count}<br />
-                                		<label>Duration: </label>{duration} <br />
+                                		<label>Duration: </label>{duration} minute(s)<br />
 									</div>
                             	</div>;
                         })}

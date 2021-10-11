@@ -16,19 +16,14 @@ const editActivityMap = new Map();
 
 
 const MyRoutines = (props) => {
-	console.log('my routines ran again')
 	const { baseURL, userToken, usernameString } = props;
 	const [ showRoutineForm, setShowRoutineForm ] = useState(false);
 	const [ showActivityForm, setShowActivityForm ] = useState(false);
 	const [ showEditRoutine, setShowEditRoutine] = useState(false);
 	const [ showAddRoutineActivity, setShowAddRoutineActivity] = useState(false);
 	const [ showEditRoutineActivity, setShowEditRoutineActivity] = useState(false);
-	const [ sendEditRoutine, setSendEditRoutine ] = useState([]);
-
 
 	const routines = fetchLoggedInUserRoutines(usernameString, userToken);
-
-
 
     return <div>
         	<h1>{usernameString}'s Routines</h1>
@@ -85,9 +80,6 @@ const MyRoutines = (props) => {
 								{ routineMap.get(id) ? <button className="navLink" onClick={() => {
 									setShowEditRoutine(!showEditRoutine)
 									routineMap.set(id, false);
-
-									console.log('hide routines', routineMap);
-
 								}
 								}>Hide</button> : 
 								
@@ -98,7 +90,6 @@ const MyRoutines = (props) => {
 									setShowEditRoutineActivity(false);
 
 									const key = document.getElementById("editRoutine" + id);
-									console.log(key);
 									
 									setShowEditRoutine(!showEditRoutine)
 									routineMap.set(id, true);
@@ -144,7 +135,7 @@ const MyRoutines = (props) => {
 												<div className="routineListActivityInner">
 													<label>Description: </label>{descrition}<br />
 													<label>Count: </label>{count}<br />
-													<label>Duration: </label>{duration}
+													<label>Duration: </label>{duration} minute(s)
 													<br /><br />
 													
 													{ editActivityMap.get(id) ? <button className="navLink" onClick={() =>{

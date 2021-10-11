@@ -7,14 +7,11 @@ const NewRoutineActivity = (props) => {
 	const [ newDuration, setNewDuration ] = useState(0);
 
 	const activities = fetchActivities();
-	
-
 	activities.sort(function(a, b){
 		if(a.name < b.name) { return -1; }
 		if(a.name > b.name) { return 1; }
 		return 0;
 	})
-
 
 	const sendRoutineActivity = () => {
 		event.preventDefault();
@@ -24,7 +21,6 @@ const NewRoutineActivity = (props) => {
 		addRoutineActivity(userToken, id, activityId, newCount, newDuration);
 	}
 	
-
 	return <div className="form">
 		<br />
 		<h3>Add a new Routine Activity</h3>

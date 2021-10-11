@@ -17,7 +17,6 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 		})
 	})
 	.then((response) => {
-		console.log("response: ",response);
 		if(!response.ok) {
 			alert("This activity is already included in your routine.");
 			throw 'Duplication Error'
@@ -29,10 +28,6 @@ async function addRoutineActivity (userToken, routineId, activityId, count, dura
 }
 
 async function editRoutineActivity(userToken, activityId, count, duration) {
-	console.log("userToken: ", userToken)
-	console.log("activityId: ", activityId);
-	console.log("count: ", count);
-	console.log("duration: ", duration);
 
 	const response = await fetch(`${baseURL}routine_activities/${activityId}`, {
 		method: 'PATCH',
@@ -64,7 +59,6 @@ async function deleteRoutineActivity(id, userToken) {
 	})
 		.then(res => res.json())
 		.then((result) => { 
-			console.log(result);
 			if(result.success === true){
 				return location.reload()
 			} else {

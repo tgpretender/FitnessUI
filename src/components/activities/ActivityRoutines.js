@@ -34,7 +34,7 @@ const ActivityRoutines = () => {
                                         <div className="routineListActivityInner">
                                         <label>Description: </label>{description} <br />
                                         <label>Count: </label>{count}<br />
-                                        <label>Duration: </label>{duration}
+                                        <label>Duration: </label>{duration} minute(s)
                                         </div>
                                     </div>;
                                 })}

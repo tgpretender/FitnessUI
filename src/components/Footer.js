@@ -4,7 +4,6 @@ const Footer = () => {
 	
     return <footer>
         <p>&copy; 2021 JPSandwich</p>
-        
         </footer>
 }
 

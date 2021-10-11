@@ -5,7 +5,6 @@ const Register = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
     async function registerUser() {
         event.preventDefault();
 

@@ -9,7 +9,6 @@ const Header = (props) => {
         setUserToken('')
         setUsernameString('')
         localStorage.clear()
-        location.reload();
     } 
 
     return <header>
